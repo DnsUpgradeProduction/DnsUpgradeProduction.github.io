@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex"></script>
+        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
         <script>
@@ -11,7 +11,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: 'https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de',
+  remoteDataBaseUrl: 'https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de',
 
   chartConfigAlterations: [],
   // A hook which can be used to modify the configuration for Chart.js.
@@ -43,6 +43,20 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'de',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
 };
 
 </script>
@@ -107,15 +121,12 @@ var translations = {
         
         Indikator 10.2 -
         
-        Gini-Koeffizient des Einkommens nach Sozialtransfers - Indikatoren der Deutschen Nachhaltigkeitsstrategie
+        Gini-Koeffizient des Einkommens nach Sozialtransfers - general.site_title
     </title>
 
 
 
-        <meta name="description" content="">
-        <meta property="og:description" content="">
         
-        <link rel="canonical" href="/">
 
         <!--[if IE 9]>
         <script src="/assets/js/lib/classList.js"></script>
@@ -126,13 +137,14 @@ var translations = {
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
 <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico" />
 
+        
 
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/assets/css/style.css?v=20221125150838">
+        <link rel="stylesheet" href="/assets/css/style.css?v=20250129075313">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -142,6 +154,9 @@ var translations = {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
         
+
+        
+
 
         <!--[if IE]>
         <link rel="stylesheet" href="/assets/css/ie.css">
@@ -162,24 +177,24 @@ layout-indicator
     <h2 class="internet-explorer-message-title">Dieser Internet-Browser wird nicht mehr unterstützt</h2>
     <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
 </div>
-<div id="disclaimer">
+<!-- <div id="disclaimer">
     
 <div class="container">
   <div class="disclaimer-alert">
-    <strong class="phase-tag">beta</strong>
+    <strong class="phase-tag">Alpha-Version</strong>
     
-    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:dns-indikatoren@destatis.de">Kommentare</a>.
+    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
     
   </div>
 </div>
 
-</div>
+</div> -->
 
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
             <a class="navbar-brand" href="/" id="home" aria-label="" title="">
-    <img src="/assets/img/de/dns_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
+    <img src="/assets/img/de/DNS_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
                 <span class="navbar-toggler-icon"></span>
@@ -187,42 +202,54 @@ layout-indicator
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
-    <a class="nav-link" href="/">17 Ziele</a>
+    <a class="nav-link" href="/">menu.1_start</a>
 </li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-status-title" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Bewertung
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-status" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_status
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-status-title"><li class=" ">
-    <a class="dropdown-item" href="/status_summary/">Statusübersicht</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-status"><li class=" ">
+    <a class="dropdown-item" href="/status/">menu.1_status_2_methodology</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/status/">Methodik</a>
+    <a class="dropdown-item" href="/status_summary/">menu.1_status_2_overview</a>
 </li>
 </ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Über uns
+          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_strategy
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-about"><li class=" ">
-    <a class="dropdown-item" href="/about_platform/">Die&nbspDNS&#8209;Online&nbspPlattform</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-strategy"><li class=" ">
+    <a class="dropdown-item" href="/strategy/dns/">menu.1_strategy_2_dns</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/about_guidance/">Technische&nbspHinweise</a>
+    <a class="dropdown-item" href="/strategy/monitoring/">menu.1_strategy_2_monitoring</a>
 </li>
-</ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-facts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Wissenswertes
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-facts"><li class=" ">
-    <a class="dropdown-item" href="/facts_agenda/">Agenda 2030</a>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/publications/">menu.1_strategy_2_publications</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/links/">menu.1_strategy_2_links</a>
 </li>
 </ul>
           </li><li class="nav-item ">
-    <a class="nav-link" href="/facts_publications/">Publikationen</a>
+    <a class="nav-link" href="/laender/">menu.1_laender</a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link" href="https://www.sdg-indikatoren.de"><img class="link_btn" src="https://g205sdgs.github.io/sdg-indicators/public/SDG Wheel_Transparent.png" title="Klicken Sie hier um zur Seite der SDG Indikatoren zu gelangen" alt="Link SDG" style="width:24px;height:24px;"/></a>
+    <a class="nav-link" href="/menu.1_global_indicators_path">menu.1_global_indicators</a>
+</li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_help
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-help"><li class=" ">
+    <a class="dropdown-item" href="/help/navigation/">menu.1_help_2_navigation</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/guidance/">menu.1_help_2_guidance</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/faq/">menu.1_help_2_faq</a>
 </li>
 </ul>
+          </li></ul>
 
                 </div>
                 <div class="header-search-bar">
@@ -239,30 +266,7 @@ layout-indicator
 </form>
 
                 </div>
-                <div class="header-toggles d-flex">
-
-
-
-
-
-  <div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/10-2/">
-                English
-            </a>
-        </li></ul>
-</div>
-
-
-                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/10-2/">
-                English
-            </a>
-        </li></ul>
-</div></span><a title="" aria-label=""
+                <div class="header-toggles d-flex"><a title="" aria-label=""
     data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
 data-event-category="Accessibility"
 data-event-action="Change contrast setting"
@@ -342,14 +346,19 @@ data-event-label="high"
 
 <script type="text/template" id="series_template">
   
+  <% if(serieses.length > 1) { %>
+  
     <h4>Zeitreihe</h4>
     <fieldset>
       <legend class="sr-only">Zeitreihe</legend>
       <% _.each(serieses, function(seriesItem, index) { %>
+        <% var isProxy = (proxySerieses.includes(seriesItem)) %>
         <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
-        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
+        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%> <%=isProxy ? proxyPill : ''%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -363,7 +372,7 @@ data-event-label="high"
     <div class="row">
       
       <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
-        <a href="/10" title="Zu den Indikatoren dieses Ziels">
+        <a href="/10/" aria-label=" 10" title="Zu den Indikatoren dieses Ziels">
           <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/10.png"
               alt="Weniger Ungleichheiten - Ziel 10"
               id="goal-10"
@@ -373,13 +382,11 @@ data-event-label="high"
       <div class="col-8 col-md-9 col-lg-10 indicator-details">
       
         <div>
-          <h1>
+          <h1 class="titles goal-10">
             
-              <h1 class="titles goal-10" title="Bereich: Verteilungsgerechtigkeit">
-                Verteilungsgerechtigkeit – <i title="Postulat: Zu große Ungleichheit innerhalb Deutschlands verhindern">Zu große Ungleichheit innerhalb Deutschlands verhindern</i>
-              </h1>
-              <h2 class="titles goal-10">Indikator 10.2: Gini-Koeffizient des Einkommens nach Sozialtransfers</h2>
+              Indikator 10.2
             
+            <span class="lead-copy">Gini-Koeffizient des Einkommens nach Sozialtransfers</span>
           </h1>
         </div>
       </div>
@@ -393,14 +400,17 @@ data-event-label="high"
 <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         
-            <li class="breadcrumb-item">
+          <li class="breadcrumb-item">
                 <a href="/">Start</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="/10" title="Ungleichheit in und zwischen Ländern verringern">Ziel 10</a>
+          <li class="breadcrumb-item">
+                <a href="/goals">Ziele</a>
             </li>
-            <li class="breadcrumb-item active">Indikator 10.2</li>
-        
+          
+          <li class="breadcrumb-item">
+              <a href="/10/" title="Ungleichheit in und zwischen Ländern verringern">Ziel 10</a>
+          </li>
+          
     </ol>
 </nav>
 
@@ -412,10 +422,12 @@ data-event-label="high"
 <!---Indicator page-->
 <!---3 Btns if there is a corresponding Indicator-->
 
-<div class="container">
+<div class="container" id="navigationbuttons">
   <div class="row justify-content-around">
     
-      <div class="col-sm-3 d-grid gap-2">
+      
+        <div class="col-sm-3 d-grid gap-2">
+      
     
       <a href="https://dns-indikatoren.de//10-1" class="btn btn-primary btn-block goal-10 navigation-btn text-nowrap" role="button">
         <b class="d-sm-none d-lg-block"><i class="fa fa-chevron-left" aria-hidden="true"></i> Vorheriger Indikator</b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-left" aria-hidden="true"></i></b>
@@ -425,12 +437,12 @@ data-event-label="high"
     
       
         <div class="col-sm-3 d-grid gap-2">
-          <a href="https://sdg-indikatoren.de//10-2-1" class="btn btn-primary btn-block goal-10 navigation-btn" title="" role="button">
+          <a href="https://sdg-indikatoren.de/10-2-1" class="btn btn-primary btn-block goal-10 navigation-btn" title="" role="button">
             <b class="btn-label d-sm-none d-lg-block">Globaler Indikator 10.2.1</b><b class="btn-label d-none d-sm-block d-lg-none">SDG 10.2.1</b>
           </a>
         </div>
         <div class="col-sm-3 d-grid gap-2">
-          <a href="https://sdg-indikatoren.de//10-4-2" class="btn btn-primary btn-block goal-10 navigation-btn" title="" role="button">
+          <a href="https://sdg-indikatoren.de/10-4-2" class="btn btn-primary btn-block goal-10 navigation-btn" title="" role="button">
             <b class="btn-label d-sm-none d-lg-block">Globaler Indikator 10.4.2</b><b class="btn-label d-none d-sm-block d-lg-none">SDG 10.4.2</b>
           </a>
         </div>
@@ -438,9 +450,11 @@ data-event-label="high"
     
 
     
-      <div class="col-sm-3 d-grid gap-2">
+      
+        <div class="col-sm-3 d-grid gap-2">
+      
     
-      <a href="https://dns-indikatoren.de//11-1-a" class="btn btn-primary btn-block goal-10 navigation-btn text-nowrap" role="button">
+      <a href="https://dns-indikatoren.de/11-1-a" class="btn btn-primary btn-block goal-10 navigation-btn text-nowrap" role="button">
         <b class="btn-label d-sm-none d-lg-block">Nächster Indikator <i class="fa fa-chevron-right" aria-hidden="true"></i></b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-right" aria-hidden="true"></i></b>
       </a>
     </div>
@@ -451,6 +465,8 @@ data-event-label="high"
 </div>
 
 <div id="main-content" class="container goal-10" role="main">
+  
+
   
 
   
@@ -480,6 +496,8 @@ data-event-label="high"
 
 
 
+
+
 <div class="row"
   id="indicatorData"
   data-indicatorid='indicator_10-2'
@@ -492,6 +510,7 @@ data-event-label="high"
   data-measurementunit=""
   data-xaxislabel=""
   data-showdata="true"
+  data-showinfo="false"
   data-graphtype="line"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -512,6 +531,8 @@ data-event-label="high"
   data-compositebreakdownlabel=""
   data-precision="[{&quot;decimals&quot;:3.0}]"
   data-graphstepsize="[{&quot;step&quot;:0.05}]"
+  data-proxy=""
+  data-proxyseries="null"
 >
   
   <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
@@ -540,7 +561,7 @@ data-event-label="high"
   <div id="datatables">
 
     
-    <a href="https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de/data/10-2.csv" class="btn btn-primary btn-download" download='indicator_10-2.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
+    <a role="button" href="https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de/data/10-2.csv" class="btn btn-primary btn-download" download='indicator_10-2.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
 
     <p class="no-js-disaggregation-hint"></p>
 
@@ -650,13 +671,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionChartFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquellen</u>:</dt>
-          
+          <dt><u>Datenquellen</u>:</dt>
           <dd><a href="https://www.destatis.de/DE/Home/_inhalt.html">Statistisches Bundesamt</a>, <a href="https://ec.europa.eu/eurostat/de/home">Eurostat</a>, <a href="https://www.bundesbank.de/de/">Deutsche Bundesbank</a>, <a href="https://www.ecb.europa.eu/home/html/index.de.html">Europäische Zentralbank</a>, <a href="https://www.diw.de/deutsch">Deutsches Institut für Wirtschaftsforschung</a></dd>
         
 
@@ -678,30 +700,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -735,13 +748,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionTableFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquellen</u>:</dt>
-          
+          <dt><u>Datenquellen</u>:</dt>
           <dd><a href="https://www.destatis.de/DE/Home/_inhalt.html">Statistisches Bundesamt</a>, <a href="https://ec.europa.eu/eurostat/de/home">Eurostat</a>, <a href="https://www.bundesbank.de/de/">Deutsche Bundesbank</a>, <a href="https://www.ecb.europa.eu/home/html/index.de.html">Europäische Zentralbank</a>, <a href="https://www.diw.de/deutsch">Deutsches Institut für Wirtschaftsforschung</a></dd>
         
 
@@ -763,30 +777,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -859,27 +864,6 @@ data-event-label="Change to indicator.contentAndProgress tab"
                 type="button"
                 class="nav-link "
                 data-bs-toggle="tab"
-                id="tab-history_1"
-                data-bs-target="#history_1"
-                aria-controls="history_1"
-                role="tab"
-                data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to indicator.history tab"
-
-            >Statusübersicht</button>
-        </li>
-    
-        
-        
-        
-        
-        <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link "
-                data-bs-toggle="tab"
                 id="tab-sources"
                 data-bs-target="#sources"
                 aria-controls="sources"
@@ -896,7 +880,7 @@ data-event-label="Change to indicator.sources tab"
     
 </ul>
 
-<div class="tab-content">
+<div class="tab-content" >
   
     
     
@@ -907,29 +891,31 @@ data-event-label="Change to indicator.sources tab"
       <article>
         <p>Diese Übersicht beinhaltet zusätzliche Informationen zu den oben dargestellten Indikatoren, wie eine kurze Definition des Indikators und eine Beschreibung des politisch festgelegten Zielwertes sowie die politische Intention für die Auswahl des Indikators.</p>
 
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
+      
+        
+        
       
 
 
@@ -942,8 +928,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -951,8 +935,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Definition </th>
+          <tr id="everythingElse"  style="opacity: 0.5" >
+            <th scope="row" style="text-align: left; width: 130px;">Definition </th>
             <td>
               
                 <p>Der Indikator stellt die Verteilung des verfügbaren Äquivalenzeinkommens mittels Gini-Koeffizienten dar.</p>
@@ -970,10 +954,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -986,8 +971,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -995,8 +978,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Ziel und Intention </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Ziel und Intention </th>
             <td>
               
                 <p>Ungleichheit in der Einkommens- und Vermögensverteilung ist ein grundsätzlich akzeptierter Bestandteil einer dynamischen Marktwirtschaft. Allerdings muss die Einkommens- und Vermögensspreizung moderat und die soziale Teilhabe aller gewährleistet bleiben. Durch entsprechende Rahmenbedingungen sowie zielgerichtete Umverteilung von Einkommen mittels Steuern und Sozialleistungen soll erreicht werden, dass der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens bis 2030 unterhalb des <abbr title="Europäische Union">EU</abbr>-Wertes liegt.</p>
@@ -1014,8 +997,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -1023,8 +1004,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Datenstand </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Datenstand </th>
             <td>
               
                 <p>Der Indikatorenbericht 2022 hat den Datenstand 31.10.2022. Die Daten auf dieser Plattform werden regelmäßig aktualisiert, sodass online aktuellere Daten verfügbar sein können als im <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022</a> veröffentlicht.</p>
@@ -1042,17 +1023,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Daten </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Texte </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -1847,24 +1914,23 @@ data-event-label="Change to indicator.sources tab"
     <div role="tabpanel" class="tab-pane " id="content">
       <article>
         
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
@@ -1873,1835 +1939,186 @@ data-event-label="Change to indicator.sources tab"
 
       
          <!-- case: content -->
-          <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Der Gini-Koeffizient ist ein Maß der relativen Ungleichheit und kann einen Wert zwischen Null und Eins annehmen. Im Falle der Gleichverteilung ergibt sich für den Gini-Koeffizienten ein Wert von Null und im Falle der Konzentration des gesamten Einkommens auf nur eine Person ein Wert von 1. Ein Gini-Koeffizient von 1 gibt somit die Situation bei maximaler Ungleichverteilung an. Je kleiner der Gini-Koeffizient ist, umso gleichmäßiger ist das Einkommen verteilt.<br /><br />Das Äquivalenzeinkommen ist ein bedarfsgewichtetes Einkommen und somit ein Wert, der sich aus dem Gesamteinkommen eines Haushalts und der Anzahl und dem Alter der in diesem Haushalt lebenden Personen ergibt. Mithilfe einer Äquivalenzskala werden die Einkommen nach Haushaltsgröße und ‑zusammensetzung gewichtet. Dadurch werden die Einkommen von Personen, die in unterschiedlich großen Haushalten leben vergleichbar, da in größeren Haushalten Einspareffekte (Economies of Scale) auftreten (<abbr title="zum Beispiel">z. B.</abbr> durch gemeinsame Nutzung von Wohnraum oder Haushaltsgeräten). Das verfügbare Äquivalenzeinkommen ist das Gesamteinkommen (einschließlich Sozialtransfers) eines Haushalts nach Steuern und anderen Abzügen und somit das Einkommen, das für Ausgaben und Sparen zur Verfügung steht. Abzugrenzen davon ist das Äquivalenzeinkommen vor Sozialleistungen, bei dem das verfügbare Einkommen ohne eventuelle Sozialtransfers (<abbr title="zum Beispiel">z. B.</abbr> Arbeitslosengeld oder Wohnbeihilfe) betrachtet wird, sowie das Markteinkommen, das sich vor Steuern, Sozialabgaben und Sozialleistungen errechnet. Bei allen betrachteten Einkommen wird nicht unterschieden, welche Quellen zur Einkommenserzielung dienen (<abbr title="zum Beispiel">z. B.</abbr> Arbeitslohn, Mieteinkünfte oder Kapitalerträge).<br /><br />Die Daten zum Äquivalenzeinkommen stammen aus der europaweit harmonisierten jährlichen Statistik über Einkommen und Lebensbedingungen (<abbr title="Europäische Union">EU</abbr>-SILC), die im Erhebungsjahr 2020 aufgrund der zunehmenden Anforderungen an die Daten hinsichtlich der Aktualität und Bereitstellung tiefer regionaler Ergebnisse mit weitreichenden methodischen Änderungen in den Mikrozensus integriert wurde. Dadurch sind die Ergebnisse ab 2020 nicht mit denen der vorherigen Erhebungsjahre vergleichbar. Der Gini-Koeffizient des Markteinkommens wird nicht aus <abbr title="Europäische Union">EU</abbr>-SILC berechnet, sodass hierfür auf die Angaben aus dem Sozio-oekonomischen Panel (<abbr title="Sozio-oekonomischen Panel">SOEP</abbr>) des Deutschen Instituts für Wirtschaftsforschung (DIW) zurückgegriffen wird. Bei den erhobenen Daten wird methodisch kompensiert (und das macht sie international vergleichbar), dass Haushalte mit hohem Einkommen <abbr title="beziehungsweise">bzw.</abbr> großem Vermögen in freiwilligen Stichprobenerhebungen häufig unterrepräsentiert sind.<br /><br />Wie in den vergangenen Jahren entsprach der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens für Deutschland (2021: 0,309) nahezu dem Wert für die Europäische Union (<abbr title="Europäische Union">EU</abbr>) (2021: 0,301), das heißt es gab nur geringe Unterschiede in der Einkommensverteilung zwischen Deutschland und der <abbr title="Europäische Union">EU</abbr>. Dennoch lag auch im Jahr 2021 der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens oberhalb des entsprechenden Wertes der <abbr title="Europäische Union">EU</abbr>, sodass das Ziel der Bundesregierung nicht erfüllt wurde. Der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens lag klar unter dem Gini-Koeffizienten des Äquivalenzeinkommens vor Sozialleistungen (0,309 zu 0,376). Erwartungsgemäß lag der Gini-Koeffizient des Markteinkommens deutlich höher (0,497 in 2019), was bestätigt, dass Sozialleistungen, Sozialversicherungen und Steuern in Deutschland erheblich zum Abbau von Ungleichheiten beim verfügbaren Einkommen beitragen.<br /><br />Betrachtet man dagegen den Gini-Koeffizienten des Vermögens in Deutschland, der aus dem „Household Finance and Consumption Survey“ (HFCS) stammt, der unregelmäßig von der Europäischen Zentralbank (EZB) durchgeführt wird, zeigt sich eine deutlich ungleichmäßigere Verteilung. Im Jahr 2017 lag der entsprechende Gini-Koeffizient bei 0,739 und damit weit über den Werten zur Einkommensverteilung. Im Jahr 2017 lag der Wert für die Eurozone bei 0,695 und somit niedriger als der Wert in Deutschland. Einige Faktoren, die durch den Gini-Koeffizienten des Vermögens nicht abgedeckt sind, relativieren allerdings den Eindruck einer überdurchschnittlich hohen Vermögensungleichheit. So werden bei der Bewertung des Vermögens zukünftige Renten- und Pensionsansprüche nicht berücksichtigt und im Vergleich zu anderen europäischen Staaten leben in Deutschland Menschen wegen des stärker ausgeprägten Mieterschutzes häufiger zur Miete als in einer eigenen Immobilie.</p>
+          <tr id="content"  style="opacity: 0.5">
+            <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Der Gini-Koeffizient ist ein Maß der relativen Ungleichheit und kann einen Wert zwischen Null und Eins annehmen. Im Falle der Gleichverteilung ergibt sich für den Gini-Koeffizienten ein Wert von Null und im Falle der Konzentration des gesamten Einkommens auf nur eine Person ein Wert von 1. Ein Gini-Koeffizient von 1 gibt somit die Situation bei maximaler Ungleichverteilung an. Je kleiner der Gini-Koeffizient ist, umso gleichmäßiger ist das Einkommen verteilt.<br /><br />Das Äquivalenzeinkommen ist ein bedarfsgewichtetes Einkommen und somit ein Wert, der sich aus dem Gesamteinkommen eines Haushalts und der Anzahl und dem Alter der in diesem Haushalt lebenden Personen ergibt. Mithilfe einer Äquivalenzskala werden die Einkommen nach Haushaltsgröße und ‑zusammensetzung gewichtet. Dadurch werden die Einkommen von Personen, die in unterschiedlich großen Haushalten leben vergleichbar, da in größeren Haushalten Einspareffekte (Economies of Scale) auftreten (<abbr title="zum Beispiel">z. B.</abbr> durch gemeinsame Nutzung von Wohnraum oder Haushaltsgeräten). Das verfügbare Äquivalenzeinkommen ist das Gesamteinkommen (einschließlich Sozialtransfers) eines Haushalts nach Steuern und anderen Abzügen und somit das Einkommen, das für Ausgaben und Sparen zur Verfügung steht. Abzugrenzen davon ist das Äquivalenzeinkommen vor Sozialleistungen, bei dem das verfügbare Einkommen ohne eventuelle Sozialtransfers (<abbr title="zum Beispiel">z. B.</abbr> Arbeitslosengeld oder Wohnbeihilfe) betrachtet wird, sowie das Markteinkommen, das sich vor Steuern, Sozialabgaben und Sozialleistungen errechnet. Bei allen betrachteten Einkommen wird nicht unterschieden, welche Quellen zur Einkommenserzielung dienen (<abbr title="zum Beispiel">z. B.</abbr> Arbeitslohn, Mieteinkünfte oder Kapitalerträge).<br /><br />Die Daten zum Äquivalenzeinkommen stammen aus der europaweit harmonisierten jährlichen Statistik über Einkommen und Lebensbedingungen (<abbr title="Europäische Union">EU</abbr>-SILC), die im Erhebungsjahr 2020 aufgrund der zunehmenden Anforderungen an die Daten hinsichtlich der Aktualität und Bereitstellung tiefer regionaler Ergebnisse mit weitreichenden methodischen Änderungen in den Mikrozensus integriert wurde. Dadurch sind die Ergebnisse ab 2020 nicht mit denen der vorherigen Erhebungsjahre vergleichbar. Der Gini-Koeffizient des Markteinkommens wird nicht aus <abbr title="Europäische Union">EU</abbr>-SILC berechnet, sodass hierfür auf die Angaben aus dem Sozio-oekonomischen Panel (<abbr title="Sozio-oekonomischen Panel">SOEP</abbr>) des Deutschen Instituts für Wirtschaftsforschung (DIW) zurückgegriffen wird. Bei den erhobenen Daten wird methodisch kompensiert (und das macht sie international vergleichbar), dass Haushalte mit hohem Einkommen <abbr title="beziehungsweise">bzw.</abbr> großem Vermögen in freiwilligen Stichprobenerhebungen häufig unterrepräsentiert sind.<br /><br />Wie in den vergangenen Jahren entsprach der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens für Deutschland (2021: 0,309) nahezu dem Wert für die Europäische Union (<abbr title="Europäische Union">EU</abbr>) (2021: 0,301), das heißt es gab nur geringe Unterschiede in der Einkommensverteilung zwischen Deutschland und der <abbr title="Europäische Union">EU</abbr>. Dennoch lag auch im Jahr 2021 der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens oberhalb des entsprechenden Wertes der <abbr title="Europäische Union">EU</abbr>, sodass das Ziel der Bundesregierung nicht erfüllt wurde. Der Gini-Koeffizient des verfügbaren Äquivalenzeinkommens lag klar unter dem Gini-Koeffizienten des Äquivalenzeinkommens vor Sozialleistungen (0,309 zu 0,376). Erwartungsgemäß lag der Gini-Koeffizient des Markteinkommens deutlich höher (0,497 in 2019), was bestätigt, dass Sozialleistungen, Sozialversicherungen und Steuern in Deutschland erheblich zum Abbau von Ungleichheiten beim verfügbaren Einkommen beitragen.<br /><br />Betrachtet man dagegen den Gini-Koeffizienten des Vermögens in Deutschland, der aus dem „Household Finance and Consumption Survey“ (HFCS) stammt, der unregelmäßig von der Europäischen Zentralbank (EZB) durchgeführt wird, zeigt sich eine deutlich ungleichmäßigere Verteilung. Im Jahr 2017 lag der entsprechende Gini-Koeffizient bei 0,739 und damit weit über den Werten zur Einkommensverteilung. Im Jahr 2017 lag der Wert für die Eurozone bei 0,695 und somit niedriger als der Wert in Deutschland. Einige Faktoren, die durch den Gini-Koeffizienten des Vermögens nicht abgedeckt sind, relativieren allerdings den Eindruck einer überdurchschnittlich hohen Vermögensungleichheit. So werden bei der Bewertung des Vermögens zukünftige Renten- und Pensionsansprüche nicht berücksichtigt und im Vergleich zu anderen europäischen Staaten leben in Deutschland Menschen wegen des stärker ausgeprägten Mieterschutzes häufiger zur Miete als in einer eigenen Immobilie.</p>
  </p>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-      </article>
-    </div>
-    
-    
-    
-    
-    
-    <div role="tabpanel" class="tab-pane " id="history_1">
-      <article>
-        <p>In dieser Übersichtstabelle sind die Bewertungen des Indikators nach Stand der vorhergehenden Jahre dargestellt. Daran lässt sich ablesen, ob das Wettersymbol für einen Indikator in den vergangenen Jahren stabil oder eher volatil war. <b>(Bewertungen aus dem Indikatorenbericht 2022)</b></p>
-
-        <!-- Count the non-empty histories (up to 2) -->
-
-
-
-
-  <div class="row">
-    
-    
-
-      
-
-      
-
-        
-        
-        <div class="col-md-6">
-          <!--  -->
-          <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Indikator </th>
-              <td colspan="9">
-                <p>10.2 Gini-Koeffizient des Einkommens nach Sozialtransfers</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Ziel </th>
-              <td colspan="9">
-                <p>Gini-Koeffizient Einkommen nach Sozialtransfer bis 2030 unterhalb des <abbr title="Europäische Union">EU</abbr>-27-Wertes</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-        
-        
-        
-        
-        
-
-        
-        
-        
-        <tr id="years">
-          <th scope="row" style="padding-right: 10px; text-align: left"">Jahr </th>
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2016</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2017</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2018</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2019</p>
-</p>
-            </td>
-          
-        </tr>
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-       <!--weather_indicator_1_target_1_item_a-->
-        
-          
-          
-          
-          
-
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-          <tr id="items">
-            <th scope="row" style="padding-right: 10px; text-align: left"">Bewertung </th>
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Leicht bewölkt.png" title="Der Zielwert oder ein besserer Wert wurde in 2016 erreicht, aber die durchschnittliche Veränderung deutete in Richtung einer Verschlechterung." alt="<p>Leicht bewölkt</p>
-" class="responsiveWeather" style="border: transparent"/></a>
-              </td>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Leicht bewölkt.png" title="Der Zielwert oder ein besserer Wert wurde in 2017 erreicht, aber die durchschnittliche Veränderung deutete in Richtung einer Verschlechterung." alt="<p>Leicht bewölkt</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Blitz.png" title="Der Zielwert wurde in 2018 verfehlt und der Indikator hat sich im Durchschnitt der vorangegangenen Veränderungen nicht in Richtung des Ziels bewegt." alt="<p>Blitz</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            <td align="left" style="padding-left: 0px;padding-right: 0px;">
-              
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Sonne.png" title="Der Zielwert oder ein besserer Wert wurde in 2019 erreicht und die durchschnittliche Veränderung deutete nicht in Richtung einer Verschlechterung." alt="<p>Sonne</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              
-            </td>
           </tr>
         
       
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
 
       <!-- weather -->
       
-        
-          
-        
-      
 
       
     
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -4328,12 +2745,6 @@ data-event-label="Change to indicator.sources tab"
   
   
 </table>
-
-        </div>
-      
-    
-  </div>
-
 
       </article>
     </div>
@@ -4356,9 +2767,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 1</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -5094,18 +3507,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.destatis.de/DE/Home/_inhalt.html" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/destatis.png" alt="Statistisches Bundesamt" title=" Klicken Sie hier um zur Homepage der Organisation Statistisches Bundesamt zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -5123,10 +3539,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -5139,17 +3556,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.destatis.de/DE/Home/_inhalt.html" target="_blank">Statistisches Bundesamt</a></p>
@@ -5167,8 +3587,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -5176,8 +3594,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -5186,9 +3604,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Einkommen-Konsum-Lebensbedingungen/Lebensbedingungen-Armutsgefaehrdung/Tabellen/einkommensverteilung-mz-silc.html" target="_blank">
                     Einkommensverteilung (Nettoäquivalenzeinkommen) in Deutschland <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -5204,7 +3628,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -5220,23 +3691,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
       
-        
-          
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -5307,9 +3858,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 2</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -6057,18 +4610,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://ec.europa.eu/eurostat/de/home" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/eurostat.png" alt="Eurostat" title=" Klicken Sie hier um zur Homepage der Organisation Eurostat zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -6086,10 +4642,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -6102,17 +4659,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://ec.europa.eu/eurostat/de/home" target="_blank">Eurostat</a></p>
@@ -6130,8 +4690,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -6139,8 +4697,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -6149,9 +4707,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://ec.europa.eu/eurostat/databrowser/view/ILC_DI12C/default/table?lang=de&category=livcon.ilc.ilc_ie.ilc_iei" target="_blank">
                     Gini-Koeffizient des verfügbaren Äquivalenzeinkommens vor Sozialleistungen - <abbr title="Europäische Union">EU</abbr>-SILC Erhebung - Eurostat-Tabelle  [ilc_di12c ] <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -6167,8 +4731,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -6183,8 +4745,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -6192,8 +4752,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 
@@ -6202,9 +4762,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://ec.europa.eu/eurostat/databrowser/view/ILC_DI12/default/table?lang=de&category=livcon.ilc.ilc_ie.ilc_iei" target="_blank">
                     Gini-Koeffizient des verfügbaren Äquivalenzeinkommens  - <abbr title="Europäische Union">EU</abbr>-SILC Erhebung - Eurostat-Tabelle  [ilc_di12&nbsp;] <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -6220,7 +4786,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -6236,17 +4849,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -6305,9 +4955,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 3</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -7067,18 +5719,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.bundesbank.de/de/" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/bundesbank.png" alt="Deutsche Bundesbank" title=" Klicken Sie hier um zur Homepage der Organisation Deutsche Bundesbank zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -7096,10 +5751,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -7112,17 +5768,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.bundesbank.de/de/" target="_blank">Deutsche Bundesbank</a></p>
@@ -7140,8 +5799,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -7149,8 +5806,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -7159,9 +5816,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.bundesbank.de/de/bundesbank/forschung/haushaltsstudie" target="_blank">
                     Studie zur wirtschaftlichen Lage privater Haushalte <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -7177,7 +5840,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -7193,17 +5903,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -7252,9 +5999,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 4</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -8024,18 +6773,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.ecb.europa.eu/home/html/index.de.html" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/ezb.png" alt="Europäische Zentralbank" title=" Klicken Sie hier um zur Homepage der Organisation Europäische Zentralbank zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -8053,10 +6805,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -8069,17 +6822,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.ecb.europa.eu/home/html/index.de.html" target="_blank">Europäische Zentralbank</a></p>
@@ -8097,8 +6853,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -8106,8 +6860,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -8116,9 +6870,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.ecb.europa.eu/pub/economic-research/research-networks/html/researcher_hfcn.en.html" target="_blank">
                     Household Finance and Consumption Network (HFCN) <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -8134,7 +6894,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -8150,17 +6957,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -8199,9 +7043,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 5</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -8981,18 +7827,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.diw.de/deutsch" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/diw.png" alt="Deutsches Institut für Wirtschaftsforschung" title=" Klicken Sie hier um zur Homepage der Organisation Deutsches Institut für Wirtschaftsforschung zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -9010,10 +7859,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -9026,17 +7876,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.diw.de/deutsch" target="_blank">Deutsches Institut für Wirtschaftsforschung</a></p>
@@ -9054,23 +7907,152 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -9112,6 +8094,8 @@ data-event-label="Change to indicator.sources tab"
   <a href="#top"></a>
 </div>
 
+
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -9119,23 +8103,22 @@ data-event-label="Change to indicator.sources tab"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Seite basiert auf Open SDG</a>
+                            <a href="https://open-sdg.org" target="_blank" onclick="return confirm_alert('von open-sdg', 'De');">
+                              Seite basiert auf Open SDG
+                            </a>
                         </li>
                         
                         <li>
-                            
-                            <a href="mailto:dns-indikatoren@destatis.de" target="_blank">Kontakt</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="mailto:dns-indikatoren@destatis.de">Kontakt</a>
+                                
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://twitter.com/destatis?lang=de" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>@destatis</a></a>
-                            
-                        </li>
-                        <li>
-                            <a href="/imprint/">Im­pres­s­um</a>
-                            
-                        </li>
+                              <a href="/imprint/ ">Im­pres­s­um</a>
+                              
+                          </li>
                         
                         
                         </ul>
@@ -9150,7 +8133,6 @@ data-event-label="Change to indicator.sources tab"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
@@ -9174,12 +8156,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/assets/js/sdg.js?v=20221125150838'></script>
+<script src='/assets/js/sdg.js?v=20250129075313'></script>
 
 
     
     
-    <script src="/assets/js/custom.js?v=20221125150838"></script><script>
+    <script src="/assets/js/custom.js?v=20250129075313"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
@@ -9187,3 +8169,4 @@ data-event-label="Change to indicator.sources tab"
 
 </body>
 </html>
+

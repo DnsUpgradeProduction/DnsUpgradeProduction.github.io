@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex"></script>
+        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
         <script>
@@ -11,7 +11,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: 'https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de',
+  remoteDataBaseUrl: 'https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de',
 
   chartConfigAlterations: [],
   // A hook which can be used to modify the configuration for Chart.js.
@@ -43,6 +43,20 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'de',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
 };
 
 </script>
@@ -107,15 +121,12 @@ var translations = {
         
         Indikator 17.1 -
         
-        Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen - Indikatoren der Deutschen Nachhaltigkeitsstrategie
+        Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen - general.site_title
     </title>
 
 
 
-        <meta name="description" content="">
-        <meta property="og:description" content="">
         
-        <link rel="canonical" href="/">
 
         <!--[if IE 9]>
         <script src="/assets/js/lib/classList.js"></script>
@@ -126,13 +137,14 @@ var translations = {
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
 <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico" />
 
+        
 
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/assets/css/style.css?v=20221125150838">
+        <link rel="stylesheet" href="/assets/css/style.css?v=20250129075313">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -142,6 +154,9 @@ var translations = {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
         
+
+        
+
 
         <!--[if IE]>
         <link rel="stylesheet" href="/assets/css/ie.css">
@@ -162,24 +177,24 @@ layout-indicator
     <h2 class="internet-explorer-message-title">Dieser Internet-Browser wird nicht mehr unterstützt</h2>
     <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
 </div>
-<div id="disclaimer">
+<!-- <div id="disclaimer">
     
 <div class="container">
   <div class="disclaimer-alert">
-    <strong class="phase-tag">beta</strong>
+    <strong class="phase-tag">Alpha-Version</strong>
     
-    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:dns-indikatoren@destatis.de">Kommentare</a>.
+    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
     
   </div>
 </div>
 
-</div>
+</div> -->
 
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
             <a class="navbar-brand" href="/" id="home" aria-label="" title="">
-    <img src="/assets/img/de/dns_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
+    <img src="/assets/img/de/DNS_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
                 <span class="navbar-toggler-icon"></span>
@@ -187,42 +202,54 @@ layout-indicator
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
-    <a class="nav-link" href="/">17 Ziele</a>
+    <a class="nav-link" href="/">menu.1_start</a>
 </li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-status-title" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Bewertung
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-status" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_status
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-status-title"><li class=" ">
-    <a class="dropdown-item" href="/status_summary/">Statusübersicht</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-status"><li class=" ">
+    <a class="dropdown-item" href="/status/">menu.1_status_2_methodology</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/status/">Methodik</a>
+    <a class="dropdown-item" href="/status_summary/">menu.1_status_2_overview</a>
 </li>
 </ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Über uns
+          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_strategy
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-about"><li class=" ">
-    <a class="dropdown-item" href="/about_platform/">Die&nbspDNS&#8209;Online&nbspPlattform</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-strategy"><li class=" ">
+    <a class="dropdown-item" href="/strategy/dns/">menu.1_strategy_2_dns</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/about_guidance/">Technische&nbspHinweise</a>
+    <a class="dropdown-item" href="/strategy/monitoring/">menu.1_strategy_2_monitoring</a>
 </li>
-</ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-facts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Wissenswertes
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-facts"><li class=" ">
-    <a class="dropdown-item" href="/facts_agenda/">Agenda 2030</a>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/publications/">menu.1_strategy_2_publications</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/links/">menu.1_strategy_2_links</a>
 </li>
 </ul>
           </li><li class="nav-item ">
-    <a class="nav-link" href="/facts_publications/">Publikationen</a>
+    <a class="nav-link" href="/laender/">menu.1_laender</a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link" href="https://www.sdg-indikatoren.de"><img class="link_btn" src="https://g205sdgs.github.io/sdg-indicators/public/SDG Wheel_Transparent.png" title="Klicken Sie hier um zur Seite der SDG Indikatoren zu gelangen" alt="Link SDG" style="width:24px;height:24px;"/></a>
+    <a class="nav-link" href="/menu.1_global_indicators_path">menu.1_global_indicators</a>
+</li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_help
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-help"><li class=" ">
+    <a class="dropdown-item" href="/help/navigation/">menu.1_help_2_navigation</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/guidance/">menu.1_help_2_guidance</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/faq/">menu.1_help_2_faq</a>
 </li>
 </ul>
+          </li></ul>
 
                 </div>
                 <div class="header-search-bar">
@@ -239,30 +266,7 @@ layout-indicator
 </form>
 
                 </div>
-                <div class="header-toggles d-flex">
-
-
-
-
-
-  <div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/17-1/">
-                English
-            </a>
-        </li></ul>
-</div>
-
-
-                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/17-1/">
-                English
-            </a>
-        </li></ul>
-</div></span><a title="" aria-label=""
+                <div class="header-toggles d-flex"><a title="" aria-label=""
     data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
 data-event-category="Accessibility"
 data-event-action="Change contrast setting"
@@ -342,14 +346,19 @@ data-event-label="high"
 
 <script type="text/template" id="series_template">
   
+  <% if(serieses.length > 1) { %>
+  
     <h4>Zeitreihe</h4>
     <fieldset>
       <legend class="sr-only">Zeitreihe</legend>
       <% _.each(serieses, function(seriesItem, index) { %>
+        <% var isProxy = (proxySerieses.includes(seriesItem)) %>
         <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
-        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
+        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%> <%=isProxy ? proxyPill : ''%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -363,7 +372,7 @@ data-event-label="high"
     <div class="row">
       
       <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
-        <a href="/17" title="Zu den Indikatoren dieses Ziels">
+        <a href="/17/" aria-label=" 17" title="Zu den Indikatoren dieses Ziels">
           <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/17.png"
               alt="Partnerschaften zur Erreichung der Ziele - Ziel 17"
               id="goal-17"
@@ -373,13 +382,11 @@ data-event-label="high"
       <div class="col-8 col-md-9 col-lg-10 indicator-details">
       
         <div>
-          <h1>
+          <h1 class="titles goal-17">
             
-              <h1 class="titles goal-17" title="Bereich: Entwicklungszusammenarbeit">
-                Entwicklungszusammenarbeit – <i title="Postulat: Nachhaltige Entwicklung unterstützen">Nachhaltige Entwicklung unterstützen</i>
-              </h1>
-              <h2 class="titles goal-17">Indikator 17.1: Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen</h2>
+              Indikator 17.1
             
+            <span class="lead-copy">Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen</span>
           </h1>
         </div>
       </div>
@@ -393,14 +400,17 @@ data-event-label="high"
 <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         
-            <li class="breadcrumb-item">
+          <li class="breadcrumb-item">
                 <a href="/">Start</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="/17" title="Umsetzungsmittel stärken und die Globale Partnerschaft für nachhaltige Entwicklung mit neuem Leben erfüllen">Ziel 17</a>
+          <li class="breadcrumb-item">
+                <a href="/goals">Ziele</a>
             </li>
-            <li class="breadcrumb-item active">Indikator 17.1</li>
-        
+          
+          <li class="breadcrumb-item">
+              <a href="/17/" title="Umsetzungsmittel stärken und die Globale Partnerschaft für nachhaltige Entwicklung mit neuem Leben erfüllen">Ziel 17</a>
+          </li>
+          
     </ol>
 </nav>
 
@@ -412,10 +422,12 @@ data-event-label="high"
 <!---Indicator page-->
 <!---3 Btns if there is a corresponding Indicator-->
 
-<div class="container">
+<div class="container" id="navigationbuttons">
   <div class="row justify-content-around">
     
-      <div class="col-sm-3 d-grid gap-2">
+      
+        <div class="col-sm-4 d-grid gap-2">
+      
     
       <a href="https://dns-indikatoren.de//16-3-ab" class="btn btn-primary btn-block goal-17 navigation-btn text-nowrap" role="button">
         <b class="d-sm-none d-lg-block"><i class="fa fa-chevron-left" aria-hidden="true"></i> Vorheriger Indikator</b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-left" aria-hidden="true"></i></b>
@@ -424,8 +436,8 @@ data-event-label="high"
 
     
       
-        <div class="col-sm-6 d-grid gap-2">
-          <a href="https://sdg-indikatoren.de//17-2-1" class="btn btn-primary btn-block goal-17 navigation-btn" title="" role="button">
+        <div class="col-sm-4 d-grid gap-2">
+          <a href="https://sdg-indikatoren.de/17-2-1" class="btn btn-primary btn-block goal-17 navigation-btn" title="" role="button">
             <b class="btn-label d-sm-none d-lg-block">Verwandter globaler Indikator 17.2.1</b><b class="btn-label d-none d-sm-block d-lg-none">SDG 17.2.1</b>
           </a>
         </div>
@@ -433,9 +445,11 @@ data-event-label="high"
     
 
     
-      <div class="col-sm-3 d-grid gap-2">
+      
+        <div class="col-sm-4 d-grid gap-2">
+      
     
-      <a href="https://dns-indikatoren.de//17-2" class="btn btn-primary btn-block goal-17 navigation-btn text-nowrap" role="button">
+      <a href="https://dns-indikatoren.de/17-2" class="btn btn-primary btn-block goal-17 navigation-btn text-nowrap" role="button">
         <b class="btn-label d-sm-none d-lg-block">Nächster Indikator <i class="fa fa-chevron-right" aria-hidden="true"></i></b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-right" aria-hidden="true"></i></b>
       </a>
     </div>
@@ -446,6 +460,8 @@ data-event-label="high"
 </div>
 
 <div id="main-content" class="container goal-17" role="main">
+  
+
   
 
   
@@ -477,6 +493,8 @@ data-event-label="high"
 
 
 
+
+
 <div class="row"
   id="indicatorData"
   data-indicatorid='indicator_17-1'
@@ -489,6 +507,7 @@ data-event-label="high"
   data-measurementunit=""
   data-xaxislabel=""
   data-showdata="true"
+  data-showinfo="false"
   data-graphtype="bar"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -509,6 +528,8 @@ data-event-label="high"
   data-compositebreakdownlabel=""
   data-precision="[{&quot;decimals&quot;:2.0}]"
   data-graphstepsize="[{&quot;step&quot;:0.1}]"
+  data-proxy=""
+  data-proxyseries="null"
 >
   
   <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
@@ -537,9 +558,9 @@ data-event-label="high"
   <div id="datatables">
 
     
-    <a href="https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de/headline/17-1.csv" class="btn btn-primary btn-download" download="indicator_17-1.csv" tabindex="0" role="button">Speichern der Headline im CSV-Format</a>
+    <a role="button" href="https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de/headline/17-1.csv" class="btn btn-primary btn-download" download="indicator_17-1.csv" tabindex="0" role="button">Speichern der Headline im CSV-Format</a>
     
-    <a href="https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de/data/17-1.csv" class="btn btn-primary btn-download" download='indicator_17-1.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
+    <a role="button" href="https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de/data/17-1.csv" class="btn btn-primary btn-download" download='indicator_17-1.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
 
     <p class="no-js-disaggregation-hint"></p>
 
@@ -695,13 +716,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionChartFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquellen</u>:</dt>
-          
+          <dt><u>Datenquellen</u>:</dt>
           <dd><a href="https://www.destatis.de/DE/Home/_inhalt.html">Statistisches Bundesamt</a>, <a href="https://www.bmz.de/de">Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung</a>, <a href="https://www.oecd.org/">Organisation für wirtschaftliche Zusammenarbeit und Entwicklung</a></dd>
         
 
@@ -720,30 +742,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -777,13 +790,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionTableFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquellen</u>:</dt>
-          
+          <dt><u>Datenquellen</u>:</dt>
           <dd><a href="https://www.destatis.de/DE/Home/_inhalt.html">Statistisches Bundesamt</a>, <a href="https://www.bmz.de/de">Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung</a>, <a href="https://www.oecd.org/">Organisation für wirtschaftliche Zusammenarbeit und Entwicklung</a></dd>
         
 
@@ -802,30 +816,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -898,27 +903,6 @@ data-event-label="Change to indicator.contentAndProgress tab"
                 type="button"
                 class="nav-link "
                 data-bs-toggle="tab"
-                id="tab-history_1"
-                data-bs-target="#history_1"
-                aria-controls="history_1"
-                role="tab"
-                data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to indicator.history tab"
-
-            >Statusübersicht</button>
-        </li>
-    
-        
-        
-        
-        
-        <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link "
-                data-bs-toggle="tab"
                 id="tab-sources"
                 data-bs-target="#sources"
                 aria-controls="sources"
@@ -935,7 +919,7 @@ data-event-label="Change to indicator.sources tab"
     
 </ul>
 
-<div class="tab-content">
+<div class="tab-content" >
   
     
     
@@ -946,29 +930,31 @@ data-event-label="Change to indicator.sources tab"
       <article>
         <p>Diese Übersicht beinhaltet zusätzliche Informationen zu den oben dargestellten Indikatoren, wie eine kurze Definition des Indikators und eine Beschreibung des politisch festgelegten Zielwertes sowie die politische Intention für die Auswahl des Indikators.</p>
 
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
+      
+        
+        
       
 
 
@@ -981,8 +967,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -990,8 +974,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Definition </th>
+          <tr id="everythingElse"  style="opacity: 0.5" >
+            <th scope="row" style="text-align: left; width: 130px;">Definition </th>
             <td>
               
                 <p>Die Indikatoren geben den Corruption Perception Index (<abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr>) von Transparency International für Deutschland (16.3.a) sowie die Anzahl der Partnerländer der deutschen Entwicklungszusammenarbeit, deren <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> sich im Vergleich zum Jahr 2012 verbessert hat (16.3.b), wieder. Der <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> misst, wie stark Korruption im öffentlichen Sektor in einem Land wahrgenommen wird.</p>
@@ -1009,10 +993,22 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
       
         
+        
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -1021,8 +1017,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Ziel und Intention </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Ziel und Intention </th>
             <td>
               
                 <p>Bis 2030 wird eine weitere Verbesserung des Corruption Perception Index (<abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr>) für Deutschland angestrebt. Zudem soll sich auch der <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> der Mehrzahl der Partnerländer der deutschen Entwicklungszusammenarbeit verbessern. Basisjahr ist dabei jeweils das Jahr 2012.</p>
@@ -1040,8 +1036,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -1049,8 +1043,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Datenstand </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Datenstand </th>
             <td>
               
                 <p>Der Indikatorenbericht 2022 hat den Datenstand 31.10.2022. Die Daten auf dieser Plattform werden regelmäßig aktualisiert, sodass online aktuellere Daten verfügbar sein können als im <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022</a> veröffentlicht.</p>
@@ -1068,17 +1062,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Daten </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Texte </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -1873,24 +1953,23 @@ data-event-label="Change to indicator.sources tab"
     <div role="tabpanel" class="tab-pane " id="content">
       <article>
         
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
@@ -1899,1899 +1978,186 @@ data-event-label="Change to indicator.sources tab"
 
       
          <!-- case: content -->
-          <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Die Studie zum Corruption Perception Index (<abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr>) von Transparency International ist die am meisten Länder umfassende Übersichtsstudie zur wahrgenommenen Korruption im öffentlichen Sektor. Bei dem <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> handelt es sich um einen Kompositindikator, der je Land unterschiedliche Experten- sowie Unternehmensbefragungen zur Wahrnehmung von Korruption im öffentlichen Sektor zusammenführt. Abhängig von den jeweiligen Befragungen können dabei unterschiedliche Verständnisse von Korruption zugrunde liegen. Die Ergebnisse dieser Befragungen können auch von den Kenntnissen des Wertes des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> oder anderer ihm zugrunde liegender Teilstudien der vorherigen Jahre selbst beeinflusst werden. Zudem wechseln die Quellen für die Berechnung des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> im Zeitablauf. In den Index werden Länder mit einbezogen, zu denen mindestens drei ausgewählte Befragungen vorliegen. Das Joint Research Centre (JRC) der Europäischen Kommission weist in seiner Analyse des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> darauf hin, dass bei der Interpretation der Ergebnisse die jeweilige statistische Signifikanz der Veränderung mitbetrachtet werden sollte und selbst bei statistisch signifikanten Unterschieden die Ergebnisse dieses Indikators mit Vorsicht zu interpretieren seien. Seine Vergleichbarkeit ist somit sowohl über die Zeit als auch zwischen den Ländern stark eingeschränkt.<br /><br />Deutschland hat sich im Vergleich zum Jahr 2012 von 79 auf 80 Punkte im Jahr 2021 verbessert. Dieser Wert hat sich gegenüber 2017 um einen Punkt verschlechtert, sodass Deutschland auf dem zehnten Platz des Rankings steht. Dabei ist diese Veränderung gegenüber 2012 nicht als statistisch signifikant (bei einem Signifikanzniveau von 5 %) anzusehen.<br /><br />Auch das Statistische Bundesamt erhebt im Rahmen der Zufriedenheitsbefragung zu behördlichen Dienstleistungen Daten zum Thema Korruption. Nach dieser hatten im Jahr 2021 3,9 % der Bevölkerung während ihres Kontakts mit öffentlichen Einrichtungen den Eindruck, dass Beschäftigte des öffentlichen Dienstes bestechlich wären. Bei der entsprechenden Umfrage unter Unternehmen hatten 4,0 % der Unternehmen diesen Eindruck.<br /><br />Die Polizeiliche Kriminalstatistik (<abbr title="Polizeilichen Kriminalstatistik">PKS</abbr>) erfasst alle der Polizei bekannt gewordenen strafrechtlichen Sachverhalte. Im Jahr 2021 wurden 712 Fälle von Vorteilsannahme, Vorteilsgewährung sowie Bestechlichkeit und Bestechung im öffentlichen Sektor erfasst. Zudem werden in der <abbr title="Polizeilichen Kriminalstatistik">PKS</abbr> auch Fälle von Bestechlichkeit und Bestechung im geschäftlichen Verkehr sowie sogenannte Begleitdelikte der Korruption wie zum Beispiel Betrugs- und Untreuehandlungen, Urkundenfälschung, wettbewerbsbeschränkende Absprachen bei Ausschreibungen, Strafvereitelung, Falschbeurkundung im Amt und Verletzung des Dienstgeheimnisses ausgewiesen.<br /><br />In Bezug auf die deutsche Entwicklungszusammenarbeit haben sich im Jahr 2021 im Vergleich zum Jahr 2012 insgesamt 48 der 87 durch den <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> bewerteten Partnerländer verbessert. Die Anzahl der sich positiv entwickelnden Partnerländer ist im betrachteten Zeitraum bis 2016 jedes Jahr gestiegen. Im Jahr 2018 ist die Anzahl leicht zurückgegangen und stieg in den Folgejahren wieder an. Eine statistisch signifikante Verbesserung (bei einem Signifikanzniveau von 5 %) wiesen in 2021 gegenüber 2012 31 Partnerländer der deutschen Entwicklungszusammenarbeit auf, im Vergleich dazu waren es 2014 sechs Partnerländer.</p>
+          <tr id="content"  style="opacity: 0.5">
+            <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Die Studie zum Corruption Perception Index (<abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr>) von Transparency International ist die am meisten Länder umfassende Übersichtsstudie zur wahrgenommenen Korruption im öffentlichen Sektor. Bei dem <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> handelt es sich um einen Kompositindikator, der je Land unterschiedliche Experten- sowie Unternehmensbefragungen zur Wahrnehmung von Korruption im öffentlichen Sektor zusammenführt. Abhängig von den jeweiligen Befragungen können dabei unterschiedliche Verständnisse von Korruption zugrunde liegen. Die Ergebnisse dieser Befragungen können auch von den Kenntnissen des Wertes des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> oder anderer ihm zugrunde liegender Teilstudien der vorherigen Jahre selbst beeinflusst werden. Zudem wechseln die Quellen für die Berechnung des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> im Zeitablauf. In den Index werden Länder mit einbezogen, zu denen mindestens drei ausgewählte Befragungen vorliegen. Das Joint Research Centre (JRC) der Europäischen Kommission weist in seiner Analyse des <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> darauf hin, dass bei der Interpretation der Ergebnisse die jeweilige statistische Signifikanz der Veränderung mitbetrachtet werden sollte und selbst bei statistisch signifikanten Unterschieden die Ergebnisse dieses Indikators mit Vorsicht zu interpretieren seien. Seine Vergleichbarkeit ist somit sowohl über die Zeit als auch zwischen den Ländern stark eingeschränkt.<br /><br />Deutschland hat sich im Vergleich zum Jahr 2012 von 79 auf 80 Punkte im Jahr 2021 verbessert. Dieser Wert hat sich gegenüber 2017 um einen Punkt verschlechtert, sodass Deutschland auf dem zehnten Platz des Rankings steht. Dabei ist diese Veränderung gegenüber 2012 nicht als statistisch signifikant (bei einem Signifikanzniveau von 5 %) anzusehen.<br /><br />Auch das Statistische Bundesamt erhebt im Rahmen der Zufriedenheitsbefragung zu behördlichen Dienstleistungen Daten zum Thema Korruption. Nach dieser hatten im Jahr 2021 3,9 % der Bevölkerung während ihres Kontakts mit öffentlichen Einrichtungen den Eindruck, dass Beschäftigte des öffentlichen Dienstes bestechlich wären. Bei der entsprechenden Umfrage unter Unternehmen hatten 4,0 % der Unternehmen diesen Eindruck.<br /><br />Die Polizeiliche Kriminalstatistik (<abbr title="Polizeilichen Kriminalstatistik">PKS</abbr>) erfasst alle der Polizei bekannt gewordenen strafrechtlichen Sachverhalte. Im Jahr 2021 wurden 712 Fälle von Vorteilsannahme, Vorteilsgewährung sowie Bestechlichkeit und Bestechung im öffentlichen Sektor erfasst. Zudem werden in der <abbr title="Polizeilichen Kriminalstatistik">PKS</abbr> auch Fälle von Bestechlichkeit und Bestechung im geschäftlichen Verkehr sowie sogenannte Begleitdelikte der Korruption wie zum Beispiel Betrugs- und Untreuehandlungen, Urkundenfälschung, wettbewerbsbeschränkende Absprachen bei Ausschreibungen, Strafvereitelung, Falschbeurkundung im Amt und Verletzung des Dienstgeheimnisses ausgewiesen.<br /><br />In Bezug auf die deutsche Entwicklungszusammenarbeit haben sich im Jahr 2021 im Vergleich zum Jahr 2012 insgesamt 48 der 87 durch den <abbr title="Korruptionswahrnehmungsindex (Corruption Perception Index)">CPI</abbr> bewerteten Partnerländer verbessert. Die Anzahl der sich positiv entwickelnden Partnerländer ist im betrachteten Zeitraum bis 2016 jedes Jahr gestiegen. Im Jahr 2018 ist die Anzahl leicht zurückgegangen und stieg in den Folgejahren wieder an. Eine statistisch signifikante Verbesserung (bei einem Signifikanzniveau von 5 %) wiesen in 2021 gegenüber 2012 31 Partnerländer der deutschen Entwicklungszusammenarbeit auf, im Vergleich dazu waren es 2014 sechs Partnerländer.</p>
  </p>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-      </article>
-    </div>
-    
-    
-    
-    
-    
-    <div role="tabpanel" class="tab-pane " id="history_1">
-      <article>
-        <p>In dieser Übersichtstabelle sind die Bewertungen des Indikators nach Stand der vorhergehenden Jahre dargestellt. Daran lässt sich ablesen, ob das Wettersymbol für einen Indikator in den vergangenen Jahren stabil oder eher volatil war. <b>(Bewertungen aus dem Indikatorenbericht 2022)</b></p>
-
-        <!-- Count the non-empty histories (up to 2) -->
-
-
-
-
-  <div class="row">
-    
-    
-
-      
-
-      
-
-        
-        
-        <div class="col-md-6">
-          <!--  -->
-          <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Indikator </th>
-              <td colspan="9">
-                <p>17.1 Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Ziel </th>
-              <td colspan="9">
-                <p>Steigerung des Anteils auf 0,7 % des  Bruttonationaleinkommens bis 2030</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-        
-        
-        
-        
-        
-
-        
-        
-        
-        <tr id="years">
-          <th scope="row" style="padding-right: 10px; text-align: left"">Jahr </th>
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2018</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2019</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2020</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2021</p>
-</p>
-            </td>
-          
-        </tr>
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-       <!--weather_indicator_1_target_1_item_a-->
-        
-          
-          
-          
-          
-
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-          <tr id="items">
-            <th scope="row" style="padding-right: 10px; text-align: left"">Bewertung </th>
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Sonne.png" title="Bei Fortsetzung der Entwicklung aus 2018 wäre der Zielwert erreicht oder um weniger als 5&nbsp;% der Differenz zwischen Zielwert und dem Wert aus 2018 verfehlt worden." alt="<p>Sonne</p>
-" class="responsiveWeather" style="border: transparent"/></a>
-              </td>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Sonne.png" title="Bei Fortsetzung der Entwicklung aus 2019 wäre der Zielwert erreicht oder um weniger als 5&nbsp;% der Differenz zwischen Zielwert und dem Wert aus 2019 verfehlt worden." alt="<p>Sonne</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Sonne.png" title="Bei Fortsetzung der Entwicklung aus 2020 wäre der Zielwert erreicht oder um weniger als 5&nbsp;% der Differenz zwischen Zielwert und dem Wert aus 2020 verfehlt worden." alt="<p>Sonne</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            <td align="left" style="padding-left: 0px;padding-right: 0px;">
-              
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Sonne.png" title="Bei Fortsetzung der Entwicklung aus 2021 wäre der Zielwert erreicht oder um weniger als 5&nbsp;% der Differenz zwischen Zielwert und dem Wert aus 2021 verfehlt worden." alt="<p>Sonne</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              
-            </td>
           </tr>
         
       
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
 
       <!-- weather -->
       
-        
-          
-        
-      
 
       
     
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -4418,12 +2784,6 @@ data-event-label="Change to indicator.sources tab"
   
   
 </table>
-
-        </div>
-      
-    
-  </div>
-
 
       </article>
     </div>
@@ -4446,9 +2806,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 1</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -5184,18 +3546,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.destatis.de/DE/Home/_inhalt.html" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/destatis.png" alt="Statistisches Bundesamt" title=" Klicken Sie hier um zur Homepage der Organisation Statistisches Bundesamt zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -5213,10 +3578,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -5229,17 +3595,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.destatis.de/DE/Home/_inhalt.html" target="_blank">Statistisches Bundesamt</a></p>
@@ -5257,8 +3626,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -5266,8 +3633,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -5276,9 +3643,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.destatis.de/DE/Themen/Staat/Oeffentliche-Finanzen/Entwicklungszusammenarbeit/_inhalt.html" target="_blank">
                     Entwicklungszusammenarbeit <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -5294,7 +3667,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -5310,23 +3730,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
       
-        
-          
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -5397,9 +3897,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 2</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -6147,18 +4649,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.bmz.de/de" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/bmz.png" alt="Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung" title=" Klicken Sie hier um zur Homepage der Organisation Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -6176,10 +4681,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -6192,17 +4698,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.bmz.de/de" target="_blank">Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung</a></p>
@@ -6220,8 +4729,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -6229,8 +4736,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -6239,9 +4746,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.bmz.de/de/ministerium/zahlen-fakten" target="_blank">
                     Zahlen und Fakten der deutschen Entwicklungszusammenarbeit <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -6257,7 +4770,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -6273,23 +4833,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
       
-        
-          
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -6348,9 +4988,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
+      
         <h4>Datenquelle 3</h4>
       
-      <table class="table">
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -7110,18 +5752,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.oecd.org/" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/oecd.png" alt="Organisation für wirtschaftliche Zusammenarbeit und Entwicklung" title=" Klicken Sie hier um zur Homepage der Organisation Organisation für wirtschaftliche Zusammenarbeit und Entwicklung zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -7139,10 +5784,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -7155,17 +5801,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.oecd.org/" target="_blank">Organisation für wirtschaftliche Zusammenarbeit und Entwicklung</a></p>
@@ -7183,8 +5832,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -7192,8 +5839,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -7202,9 +5849,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://stats.oecd.org/Index.aspx?DataSetCode=TABLE1" target="_blank">
                     OECD - Gesamtströme nach Geber (nicht auf Deutsch verfügbar) <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -7220,7 +5873,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -7236,17 +5936,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -7308,6 +6045,8 @@ data-event-label="Change to indicator.sources tab"
   <a href="#top"></a>
 </div>
 
+
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -7315,23 +6054,22 @@ data-event-label="Change to indicator.sources tab"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Seite basiert auf Open SDG</a>
+                            <a href="https://open-sdg.org" target="_blank" onclick="return confirm_alert('von open-sdg', 'De');">
+                              Seite basiert auf Open SDG
+                            </a>
                         </li>
                         
                         <li>
-                            
-                            <a href="mailto:dns-indikatoren@destatis.de" target="_blank">Kontakt</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="mailto:dns-indikatoren@destatis.de">Kontakt</a>
+                                
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://twitter.com/destatis?lang=de" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>@destatis</a></a>
-                            
-                        </li>
-                        <li>
-                            <a href="/imprint/">Im­pres­s­um</a>
-                            
-                        </li>
+                              <a href="/imprint/ ">Im­pres­s­um</a>
+                              
+                          </li>
                         
                         
                         </ul>
@@ -7346,7 +6084,6 @@ data-event-label="Change to indicator.sources tab"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
@@ -7370,12 +6107,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/assets/js/sdg.js?v=20221125150838'></script>
+<script src='/assets/js/sdg.js?v=20250129075313'></script>
 
 
     
     
-    <script src="/assets/js/custom.js?v=20221125150838"></script><script>
+    <script src="/assets/js/custom.js?v=20250129075313"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
@@ -7383,3 +6120,4 @@ data-event-label="Change to indicator.sources tab"
 
 </body>
 </html>
+

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex"></script>
+        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
         <script>
@@ -11,7 +11,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: 'https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de',
+  remoteDataBaseUrl: 'https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de',
 
   chartConfigAlterations: [],
   // A hook which can be used to modify the configuration for Chart.js.
@@ -43,6 +43,20 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'de',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
 };
 
 </script>
@@ -107,15 +121,12 @@ var translations = {
         
         Indikator 12.1.a -
         
-        Marktanteil von Produkten mit staatlichen Umweltzeichen - Indikatoren der Deutschen Nachhaltigkeitsstrategie
+        Marktanteil von Produkten mit staatlichen Umweltzeichen - general.site_title
     </title>
 
 
 
-        <meta name="description" content="">
-        <meta property="og:description" content="">
         
-        <link rel="canonical" href="/">
 
         <!--[if IE 9]>
         <script src="/assets/js/lib/classList.js"></script>
@@ -126,13 +137,14 @@ var translations = {
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
 <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico" />
 
+        
 
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/assets/css/style.css?v=20221125150838">
+        <link rel="stylesheet" href="/assets/css/style.css?v=20250129075313">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -142,6 +154,9 @@ var translations = {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
         
+
+        
+
 
         <!--[if IE]>
         <link rel="stylesheet" href="/assets/css/ie.css">
@@ -162,24 +177,24 @@ layout-indicator
     <h2 class="internet-explorer-message-title">Dieser Internet-Browser wird nicht mehr unterstützt</h2>
     <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
 </div>
-<div id="disclaimer">
+<!-- <div id="disclaimer">
     
 <div class="container">
   <div class="disclaimer-alert">
-    <strong class="phase-tag">beta</strong>
+    <strong class="phase-tag">Alpha-Version</strong>
     
-    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:dns-indikatoren@destatis.de">Kommentare</a>.
+    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
     
   </div>
 </div>
 
-</div>
+</div> -->
 
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
             <a class="navbar-brand" href="/" id="home" aria-label="" title="">
-    <img src="/assets/img/de/dns_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
+    <img src="/assets/img/de/DNS_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
                 <span class="navbar-toggler-icon"></span>
@@ -187,42 +202,54 @@ layout-indicator
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
-    <a class="nav-link" href="/">17 Ziele</a>
+    <a class="nav-link" href="/">menu.1_start</a>
 </li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-status-title" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Bewertung
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-status" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_status
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-status-title"><li class=" ">
-    <a class="dropdown-item" href="/status_summary/">Statusübersicht</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-status"><li class=" ">
+    <a class="dropdown-item" href="/status/">menu.1_status_2_methodology</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/status/">Methodik</a>
+    <a class="dropdown-item" href="/status_summary/">menu.1_status_2_overview</a>
 </li>
 </ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Über uns
+          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_strategy
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-about"><li class=" ">
-    <a class="dropdown-item" href="/about_platform/">Die&nbspDNS&#8209;Online&nbspPlattform</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-strategy"><li class=" ">
+    <a class="dropdown-item" href="/strategy/dns/">menu.1_strategy_2_dns</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/about_guidance/">Technische&nbspHinweise</a>
+    <a class="dropdown-item" href="/strategy/monitoring/">menu.1_strategy_2_monitoring</a>
 </li>
-</ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-facts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Wissenswertes
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-facts"><li class=" ">
-    <a class="dropdown-item" href="/facts_agenda/">Agenda 2030</a>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/publications/">menu.1_strategy_2_publications</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/links/">menu.1_strategy_2_links</a>
 </li>
 </ul>
           </li><li class="nav-item ">
-    <a class="nav-link" href="/facts_publications/">Publikationen</a>
+    <a class="nav-link" href="/laender/">menu.1_laender</a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link" href="https://www.sdg-indikatoren.de"><img class="link_btn" src="https://g205sdgs.github.io/sdg-indicators/public/SDG Wheel_Transparent.png" title="Klicken Sie hier um zur Seite der SDG Indikatoren zu gelangen" alt="Link SDG" style="width:24px;height:24px;"/></a>
+    <a class="nav-link" href="/menu.1_global_indicators_path">menu.1_global_indicators</a>
+</li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_help
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-help"><li class=" ">
+    <a class="dropdown-item" href="/help/navigation/">menu.1_help_2_navigation</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/guidance/">menu.1_help_2_guidance</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/faq/">menu.1_help_2_faq</a>
 </li>
 </ul>
+          </li></ul>
 
                 </div>
                 <div class="header-search-bar">
@@ -239,30 +266,7 @@ layout-indicator
 </form>
 
                 </div>
-                <div class="header-toggles d-flex">
-
-
-
-
-
-  <div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/12-1-a/">
-                English
-            </a>
-        </li></ul>
-</div>
-
-
-                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/12-1-a/">
-                English
-            </a>
-        </li></ul>
-</div></span><a title="" aria-label=""
+                <div class="header-toggles d-flex"><a title="" aria-label=""
     data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
 data-event-category="Accessibility"
 data-event-action="Change contrast setting"
@@ -342,14 +346,19 @@ data-event-label="high"
 
 <script type="text/template" id="series_template">
   
+  <% if(serieses.length > 1) { %>
+  
     <h4>Zeitreihe</h4>
     <fieldset>
       <legend class="sr-only">Zeitreihe</legend>
       <% _.each(serieses, function(seriesItem, index) { %>
+        <% var isProxy = (proxySerieses.includes(seriesItem)) %>
         <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
-        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
+        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%> <%=isProxy ? proxyPill : ''%></label>
       <% }); %>
     </fieldset>
+  
+  <% } %>
   
 </script>
 
@@ -363,7 +372,7 @@ data-event-label="high"
     <div class="row">
       
       <div class="col-4 col-md-3 col-lg-2 goal-icon goal-tiles">
-        <a href="/12" title="Zu den Indikatoren dieses Ziels">
+        <a href="/12/" aria-label=" 12" title="Zu den Indikatoren dieses Ziels">
           <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/12.png"
               alt="Nachhaltige/r Konsum und Produktion - Ziel 12"
               id="goal-12"
@@ -373,13 +382,11 @@ data-event-label="high"
       <div class="col-8 col-md-9 col-lg-10 indicator-details">
       
         <div>
-          <h1>
+          <h1 class="titles goal-12">
             
-              <h1 class="titles goal-12" title="Bereich: Nachhaltiger Konsum">
-                Nachhaltiger Konsum – <i title="Postulat: Konsum umwelt- und sozialverträglich gestalten">Konsum umwelt- und sozialverträglich gestalten</i>
-              </h1>
-              <h2 class="titles goal-12">Indikator 12.1.a: Marktanteil von Produkten mit staatlichen Umweltzeichen</h2>
+              Indikator 12.1.a
             
+            <span class="lead-copy">Marktanteil von Produkten mit staatlichen Umweltzeichen</span>
           </h1>
         </div>
       </div>
@@ -393,14 +400,17 @@ data-event-label="high"
 <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         
-            <li class="breadcrumb-item">
+          <li class="breadcrumb-item">
                 <a href="/">Start</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="/12" title="Nachhaltige Konsum- und Produktionsmuster sicherstellen">Ziel 12</a>
+          <li class="breadcrumb-item">
+                <a href="/goals">Ziele</a>
             </li>
-            <li class="breadcrumb-item active">Indikator 12.1.a</li>
-        
+          
+          <li class="breadcrumb-item">
+              <a href="/12/" title="Nachhaltige Konsum- und Produktionsmuster sicherstellen">Ziel 12</a>
+          </li>
+          
     </ol>
 </nav>
 
@@ -412,7 +422,7 @@ data-event-label="high"
 <!---Indicator page-->
 <!---3 Btns if there is a corresponding Indicator-->
 
-<div class="container">
+<div class="container" id="navigationbuttons">
   <div class="row justify-content-around">
     
       <div class="col-sm-6 d-grid gap-2">
@@ -427,7 +437,7 @@ data-event-label="high"
     
       <div class="col-sm-6 d-grid gap-2">
     
-      <a href="https://dns-indikatoren.de//12-1-b" class="btn btn-primary btn-block goal-12 navigation-btn text-nowrap" role="button">
+      <a href="https://dns-indikatoren.de/12-1-b" class="btn btn-primary btn-block goal-12 navigation-btn text-nowrap" role="button">
         <b class="btn-label d-sm-none d-lg-block">Nächster Indikator <i class="fa fa-chevron-right" aria-hidden="true"></i></b><b class="d-none d-sm-block d-lg-none"><i class="fa fa-chevron-right" aria-hidden="true"></i></b>
       </a>
     </div>
@@ -438,6 +448,8 @@ data-event-label="high"
 </div>
 
 <div id="main-content" class="container goal-12" role="main">
+  
+
   
 
   
@@ -469,6 +481,8 @@ data-event-label="high"
 
 
 
+
+
 <div class="row"
   id="indicatorData"
   data-indicatorid='indicator_12-1-a'
@@ -481,6 +495,7 @@ data-event-label="high"
   data-measurementunit=""
   data-xaxislabel=""
   data-showdata="true"
+  data-showinfo="false"
   data-graphtype="bar"
   data-graphtypes="null"
   data-geocoderegex=""
@@ -501,6 +516,8 @@ data-event-label="high"
   data-compositebreakdownlabel=""
   data-precision="[{&quot;decimals&quot;:1.0}]"
   data-graphstepsize="[{&quot;step&quot;:5.0}]"
+  data-proxy=""
+  data-proxyseries="null"
 >
   
   <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
@@ -529,9 +546,9 @@ data-event-label="high"
   <div id="datatables">
 
     
-    <a href="https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de/headline/12-1-a.csv" class="btn btn-primary btn-download" download="indicator_12-1-a.csv" tabindex="0" role="button">Speichern der Headline im CSV-Format</a>
+    <a role="button" href="https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de/headline/12-1-a.csv" class="btn btn-primary btn-download" download="indicator_12-1-a.csv" tabindex="0" role="button">Speichern der Headline im CSV-Format</a>
     
-    <a href="https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de/data/12-1-a.csv" class="btn btn-primary btn-download" download='indicator_12-1-a.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
+    <a role="button" href="https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de/data/12-1-a.csv" class="btn btn-primary btn-download" download='indicator_12-1-a.csv' tabindex='0' role='button'>Daten im CSV-Format speichern</a>
 
     <p class="no-js-disaggregation-hint"></p>
 
@@ -817,13 +834,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionChartFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquelle</u>:</dt>
-          
+          <dt><u>Datenquelle</u>:</dt>
           <dd><a href="https://www.umweltbundesamt.de/">Umweltbundesamt</a></dd>
         
 
@@ -842,30 +860,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -899,13 +908,14 @@ data-event-label="Change to Table tab"
 
 
 
+
+
+
 <div id="selectionTableFooter" class="table-footer-text">
   <h5 class="sr-only">Chart details</h5>
     <dl>
         
-          
-            <dt><u>Datenquelle</u>:</dt>
-          
+          <dt><u>Datenquelle</u>:</dt>
           <dd><a href="https://www.umweltbundesamt.de/">Umweltbundesamt</a></dd>
         
 
@@ -924,30 +934,21 @@ data-event-label="Change to Table tab"
         
 
         
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ><u>Anmerkung</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="COMMENT_TS"
-          ></dd>
-          
-          <dt
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ><u>Letzte Änderung der Daten</u>:</dt>
-          <dd
-            class="data-controlled-footer-field"
-            data-ts-attribute="DATA_LAST_UPDATE"
-          ></dd>
-          
+        
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ><u>Anmerkung</u>:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute="COMMENT_TS"
+        ></dd>
+        
         
 
         
-          <dt><u>Copyright</u>:</dt>
-          <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
+        <dt><u>Copyright</u>:</dt>
+        <dd>&copy; Statistisches Bundesamt (Destatis), 2022</dd>
         
     </dl>
 </div>
@@ -1020,27 +1021,6 @@ data-event-label="Change to indicator.contentAndProgress tab"
                 type="button"
                 class="nav-link "
                 data-bs-toggle="tab"
-                id="tab-history_1"
-                data-bs-target="#history_1"
-                aria-controls="history_1"
-                role="tab"
-                data-on="click"
-data-event-category="Tab change"
-data-event-action="Change metadata view"
-data-event-label="Change to indicator.history tab"
-
-            >Statusübersicht</button>
-        </li>
-    
-        
-        
-        
-        
-        <li role="presentation" class="nav-item">
-            <button
-                type="button"
-                class="nav-link "
-                data-bs-toggle="tab"
                 id="tab-sources"
                 data-bs-target="#sources"
                 aria-controls="sources"
@@ -1057,7 +1037,7 @@ data-event-label="Change to indicator.sources tab"
     
 </ul>
 
-<div class="tab-content">
+<div class="tab-content" >
   
     
     
@@ -1068,29 +1048,31 @@ data-event-label="Change to indicator.sources tab"
       <article>
         <p>Diese Übersicht beinhaltet zusätzliche Informationen zu den oben dargestellten Indikatoren, wie eine kurze Definition des Indikators und eine Beschreibung des politisch festgelegten Zielwertes sowie die politische Intention für die Auswahl des Indikators.</p>
 
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
+      
+        
+        
       
 
 
@@ -1103,8 +1085,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -1112,8 +1092,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Definition </th>
+          <tr id="everythingElse"  style="opacity: 0.5" >
+            <th scope="row" style="text-align: left; width: 130px;">Definition </th>
             <td>
               
                 <p>Der Indikator misst den Marktanteil von Produkten mit freiwilligen oder verpflichtenden Umweltzeichen, deren Vergabegrundlagen von staatlichen Organen festgelegt werden. Zu den Umweltzeichen und Produkten gehören Energieverbrauchskennzeichnung bei Personenkraftwagen, Haushaltsgroßgeräten, Leuchtmitteln und Fernsehern, Bio-Siegel bei Lebensmitteln sowie Blauer Engel bei Hygienepapieren, Wasch- und Reinigungsmitteln.</p>
@@ -1131,10 +1111,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -1147,8 +1128,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -1156,8 +1135,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Ziel und Intention </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Ziel und Intention </th>
             <td>
               
                 <p>Private Haushalte können direkt und indirekt nachhaltig konsumieren. Einerseits beeinflusst ihre Einkaufsentscheidung ihre eigene Umweltbilanz, da energieeffiziente Fahrzeuge oder gedämmte Häuser in ihrer Nutzung weniger Energie benötigen und einen geringeren Ausstoß von Treibhausgasen verursachen. Andererseits können die Verbraucherinnen und Verbraucher Produkte erwerben, die auf besonders nachhaltige Weise hergestellt wurden. Ziel der Bundesregierung ist es daher, den Marktanteil von Produkten mit staatlichen Umweltzeichen bis 2030 auf 34 % zu erhöhen.</p>
@@ -1175,8 +1154,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -1184,8 +1161,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Datenstand </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Datenstand </th>
             <td>
               
                 <p>Der Indikatorenbericht 2022 hat den Datenstand 31.10.2022. Die Daten auf dieser Plattform werden regelmäßig aktualisiert, sodass online aktuellere Daten verfügbar sein können als im <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022</a> veröffentlicht.</p>
@@ -1203,17 +1180,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Daten </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Letzte Änderung der Texte </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -2008,24 +2071,23 @@ data-event-label="Change to indicator.sources tab"
     <div role="tabpanel" class="tab-pane " id="content">
       <article>
         
-        <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
         
+<table class="table" style="width:100%; table-layout: fixed;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       
 
       
@@ -2034,1761 +2096,186 @@ data-event-label="Change to indicator.sources tab"
 
       
          <!-- case: content -->
-          <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Zwischen 2012 und 2019 stieg der Marktanteil von Produkten mit staatlichen Umweltzeichen von 3,6 % auf 7,9 %. Dies entspricht einem Umsatz von insgesamt 26,5 Milliarden Euro im Jahr 2019. Der höchste Wert wurde 2016 mit 8,6 % erreicht. 2017 und 2018 ist der Anteil im Vergleich zum Vorjahr gesunken, während der Anteil 2019 wieder leicht stieg. Der Indikator folgt im Wesentlichen der Entwicklung auf dem Pkw-Markt. Der Marktanteil von A+-Pkw war von 14 % (2016) auf 9,6 % (2018) zurückgegangen und ist 2019 auf 10,0 % leicht gestiegen. Zuletzt entwickelte sich der Indikator zwar in die angestrebte Richtung, jedoch wird ohne eine deutliche Steigerung des Marktanteils das Ziel bis zum Jahr 2030 erheblich verfehlt.<br /><br />Die Daten zum Indikator stammen vom Umweltbundesamt (<abbr title="Umweltbundesamt">UBA</abbr>). Das <abbr title="Umweltbundesamt">UBA</abbr> verwendet zur Berechnung des Indikators Informationen aus diversen Quellen, wie <abbr title="zum Beispiel">z. B.</abbr> von der Gesellschaft für Konsumforschung. Der Indikator setzt sich aus den Marktanteilen von Produkten zusammen, welche entweder die höchste <abbr title="Europäische Union">EU</abbr>-Energieverbrauchskennzeichnung (<abbr title="Europäische Union">EU</abbr>-EVK) innerhalb ihrer Geräteklasse aufweisen oder mit einem der folgenden Umweltzeichen zertifiziert sind: <abbr title="Europäische Union">EU</abbr>-Ecolabel, <abbr title="Europäische Union">EU</abbr>-Bio-Siegel oder Blauer Engel. Die <abbr title="Europäische Union">EU</abbr>-EVK adressiert primär Energieverbrauch und Treibhausgasemissionen, während die anderen drei Umweltzeichen auch andere Umweltbelastungen wie Pestizideinsatz und gefährliche Abwässer berücksichtigen. Der Indikator soll abbilden, ob umweltfreundliche Produktvarianten konventionelle Produktvarianten im Markt ersetzen. Betrachtet wird dabei nur eine Auswahl an Produktgruppen, weil unter anderem nur begrenzt Daten zu Umsätzen von Produkten mit Nachhaltigkeitskennzeichen verfügbar sind. Zudem sollen Doppelzählungen ausgeschlossen werden.<br /><br />Der Indikator deckt die Konsumfelder Wohnen, Mobilität und Ernährung ab. Es werden Haushaltsgeräte wie Kühlgeräte, Waschmaschinen, Fernsehgeräte und Klimageräte betrachtet. Weiterhin werden Leuchtmittel, Lebensmittel, Hygienepapier, Wasch- und Reinigungsmittel und Personenkraftwagen erfasst. Da die Märkte der einzelnen Produktgruppen unterschiedlich groß sind, werden die Marktanteile der Produkte mit staatlichen Umweltzeichen mit dem Umsatzvolumen des jeweiligen Gesamtmarktes gewichtet, um Verzerrungen zu vermeiden. Außerdem können auf diese Weise die Ausgaben für umweltfreundliche Produkte in Beziehung zu den Gesamtausgaben der privaten Haushalte gesetzt werden.<br /><br />Eine Gewichtung der Marktanteile nach Umweltrelevanz der jeweiligen Produktgruppen ist nicht möglich, da die Umweltzeichen verschiedene Kategorien (Energieverbrauch, Treibhausgasemissionen, Materialbedarf) adressieren, die nicht aufgerechnet werden können. Daher lässt sich eine allumfassende Bewertung über mehrere Umweltkategorien – im Sinne eines Umweltfußabdrucks der Produktgruppen – nicht darstellen. Der Indikator erfasst zudem nur die neu in den Verkehr gebrachten Güter in Relation zum Gesamtmarkt. Somit berücksichtigt er nicht, inwieweit die höhere Effizienz der Geräte zu einer Verhaltensänderung der Konsumenten führt und gegebenenfalls zu einem erhöhten Konsum (sog. Rebound-Effekt). Er beschreibt zudem den Marktanteil auf Basis von Umsätzen. Bedingt durch Preisunterschiede zwischen Produkten mit und ohne entsprechende Umweltsiegel lässt er keine Rückschlüsse auf deren Anzahl zu. Folglich kann eine Änderung des Indikatorwertes auch auf Preisänderungen in einer Produktgruppe zurückzuführen sein.</p>
+          <tr id="content"  style="opacity: 0.5">
+            <p> <p><b>Text aus dem <a href="https://dns-indikatoren.de/facts_publications/">Indikatorenbericht 2022 </a></b><br /><br />Zwischen 2012 und 2019 stieg der Marktanteil von Produkten mit staatlichen Umweltzeichen von 3,6 % auf 7,9 %. Dies entspricht einem Umsatz von insgesamt 26,5 Milliarden Euro im Jahr 2019. Der höchste Wert wurde 2016 mit 8,6 % erreicht. 2017 und 2018 ist der Anteil im Vergleich zum Vorjahr gesunken, während der Anteil 2019 wieder leicht stieg. Der Indikator folgt im Wesentlichen der Entwicklung auf dem Pkw-Markt. Der Marktanteil von A+-Pkw war von 14 % (2016) auf 9,6 % (2018) zurückgegangen und ist 2019 auf 10,0 % leicht gestiegen. Zuletzt entwickelte sich der Indikator zwar in die angestrebte Richtung, jedoch wird ohne eine deutliche Steigerung des Marktanteils das Ziel bis zum Jahr 2030 erheblich verfehlt.<br /><br />Die Daten zum Indikator stammen vom Umweltbundesamt (<abbr title="Umweltbundesamt">UBA</abbr>). Das <abbr title="Umweltbundesamt">UBA</abbr> verwendet zur Berechnung des Indikators Informationen aus diversen Quellen, wie <abbr title="zum Beispiel">z. B.</abbr> von der Gesellschaft für Konsumforschung. Der Indikator setzt sich aus den Marktanteilen von Produkten zusammen, welche entweder die höchste <abbr title="Europäische Union">EU</abbr>-Energieverbrauchskennzeichnung (<abbr title="Europäische Union">EU</abbr>-EVK) innerhalb ihrer Geräteklasse aufweisen oder mit einem der folgenden Umweltzeichen zertifiziert sind: <abbr title="Europäische Union">EU</abbr>-Ecolabel, <abbr title="Europäische Union">EU</abbr>-Bio-Siegel oder Blauer Engel. Die <abbr title="Europäische Union">EU</abbr>-EVK adressiert primär Energieverbrauch und Treibhausgasemissionen, während die anderen drei Umweltzeichen auch andere Umweltbelastungen wie Pestizideinsatz und gefährliche Abwässer berücksichtigen. Der Indikator soll abbilden, ob umweltfreundliche Produktvarianten konventionelle Produktvarianten im Markt ersetzen. Betrachtet wird dabei nur eine Auswahl an Produktgruppen, weil unter anderem nur begrenzt Daten zu Umsätzen von Produkten mit Nachhaltigkeitskennzeichen verfügbar sind. Zudem sollen Doppelzählungen ausgeschlossen werden.<br /><br />Der Indikator deckt die Konsumfelder Wohnen, Mobilität und Ernährung ab. Es werden Haushaltsgeräte wie Kühlgeräte, Waschmaschinen, Fernsehgeräte und Klimageräte betrachtet. Weiterhin werden Leuchtmittel, Lebensmittel, Hygienepapier, Wasch- und Reinigungsmittel und Personenkraftwagen erfasst. Da die Märkte der einzelnen Produktgruppen unterschiedlich groß sind, werden die Marktanteile der Produkte mit staatlichen Umweltzeichen mit dem Umsatzvolumen des jeweiligen Gesamtmarktes gewichtet, um Verzerrungen zu vermeiden. Außerdem können auf diese Weise die Ausgaben für umweltfreundliche Produkte in Beziehung zu den Gesamtausgaben der privaten Haushalte gesetzt werden.<br /><br />Eine Gewichtung der Marktanteile nach Umweltrelevanz der jeweiligen Produktgruppen ist nicht möglich, da die Umweltzeichen verschiedene Kategorien (Energieverbrauch, Treibhausgasemissionen, Materialbedarf) adressieren, die nicht aufgerechnet werden können. Daher lässt sich eine allumfassende Bewertung über mehrere Umweltkategorien – im Sinne eines Umweltfußabdrucks der Produktgruppen – nicht darstellen. Der Indikator erfasst zudem nur die neu in den Verkehr gebrachten Güter in Relation zum Gesamtmarkt. Somit berücksichtigt er nicht, inwieweit die höhere Effizienz der Geräte zu einer Verhaltensänderung der Konsumenten führt und gegebenenfalls zu einem erhöhten Konsum (sog. Rebound-Effekt). Er beschreibt zudem den Marktanteil auf Basis von Umsätzen. Bedingt durch Preisunterschiede zwischen Produkten mit und ohne entsprechende Umweltsiegel lässt er keine Rückschlüsse auf deren Anzahl zu. Folglich kann eine Änderung des Indikatorwertes auch auf Preisänderungen in einer Produktgruppe zurückzuführen sein.</p>
  </p>
-        
-      
-
-      <!-- weather -->
-      
-
-      
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</table>
-
-      </article>
-    </div>
-    
-    
-    
-    
-    
-    <div role="tabpanel" class="tab-pane " id="history_1">
-      <article>
-        <p>In dieser Übersichtstabelle sind die Bewertungen des Indikators nach Stand der vorhergehenden Jahre dargestellt. Daran lässt sich ablesen, ob das Wettersymbol für einen Indikator in den vergangenen Jahren stabil oder eher volatil war. <b>(Bewertungen aus dem Indikatorenbericht 2022)</b></p>
-
-        <!-- Count the non-empty histories (up to 2) -->
-
-
-
-
-  <div class="row">
-    
-    
-
-      
-
-      
-
-        
-        
-        <div class="col-md-6">
-          <!--  -->
-          <table class="table">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Indikator </th>
-              <td colspan="9">
-                <p>12.1.a Marktanteil von Produkten mit staatlichen Umweltzeichen</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-           <!-- leaves only weather_indicator_1_target-->
-            <tr id="indAndtarg">
-              <th scope="row" style="padding-right: 10px; text-align: left"">Ziel </th>
-              <td colspan="9">
-                <p>Steigerung des Marktanteils auf 34 % bis 2030</p>
-
-              </td>
-            </tr>
-          
-        
-      
-
-      
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-        
-        
-        
-        
-        
-
-        
-        
-        
-        <tr id="years">
-          <th scope="row" style="padding-right: 10px; text-align: left"">Jahr </th>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2017</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2018</p>
-</p>
-            </td>
-          
-          
-            <td align="left" style="margin-bottom: 15px;">
-              <p><p>2019</p>
-</p>
-            </td>
-          
-        </tr>
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
-  
-      
-        
-          
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-       <!--weather_indicator_1_target_1_item_a-->
-        
-          
-          
-          
-          
-
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-             <!--weather_indicator_(1...3)_target_(1...4)_category-->
-            
-            
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_valid-->
-               <!--weather_indicator_(1...3)_target_(1...4)_item_a_title-->
-              
-            
-          
-          <tr id="items">
-            <th scope="row" style="padding-right: 10px; text-align: left"">Bewertung </th>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Wolke.png" title="Der Indikator entwickelte sich in 2017 zwar in die gewünschte Richtung auf das Ziel zu, bei Fortsetzung der Entwicklung wäre das Ziel im Zieljahr aber um mehr als 20 % der Differenz zwischen Zielwert und dem Wert aus 2017 verfehlt worden." alt="<p>Wolke</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            
-              <td align="left" style="padding-left: 0px;padding-right: 0px;">
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Wolke.png" title="Der Indikator entwickelte sich in 2018 zwar in die gewünschte Richtung auf das Ziel zu, bei Fortsetzung der Entwicklung wäre das Ziel im Zieljahr aber um mehr als 20 % der Differenz zwischen Zielwert und dem Wert aus 2018 verfehlt worden." alt="<p>Wolke</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              </td>
-            
-            <td align="left" style="padding-left: 0px;padding-right: 0px;">
-              
-                <a href=" /status/ "><img src="https://g205sdgs.github.io/sdg-indicators/public/Wettersymbole/left/Wolke.png" title="Der Indikator entwickelte sich in 2019 zwar in die gewünschte Richtung auf das Ziel zu, bei Fortsetzung der Entwicklung wäre das Ziel im Zieljahr aber um mehr als 20 % der Differenz zwischen Zielwert und dem Wert aus 2019 verfehlt worden." alt="<p>Wolke</p>
-" class="responsiveWeather"  style="border: transparent"/></a>
-              
-            </td>
           </tr>
         
       
-    
-  
-      
-        
-      
-
-      
-      
-
-
-      
 
       <!-- weather -->
       
-        
-          
-        
-      
 
       
     
   
-      
-        
-      
-
-      
-      
-
-
-      
-
-      <!-- weather -->
-      
-        
-          
-        
-      
-
-      
-    
   
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
-      
-        
-          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -4415,12 +2902,6 @@ data-event-label="Change to indicator.sources tab"
   
   
 </table>
-
-        </div>
-      
-    
-  </div>
-
 
       </article>
     </div>
@@ -4443,7 +2924,11 @@ data-event-label="Change to indicator.sources tab"
     
     <div class="col-md-6">
       
-      <table class="table">
+        <h4 class="sr-only">Datenquelle 1</h4>
+      
+      
+      
+<table class="table" style="width:100%; table-layout: fixed;">
   
   
   
@@ -5179,18 +3664,21 @@ data-event-label="Change to indicator.sources tab"
   
   
   
+      
+
+      
       
         
-      
-
-      
+        
+          
+        <!-- 
       
 
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left"> </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
             <td>
               
                 <p><a href="https://www.umweltbundesamt.de/" target="_blank"><img src="https://dnsUpgradeEnvironment.github.io/dns-indicators/public/OrgImgDe/uba.png" alt="Umweltbundesamt" title=" Klicken Sie hier um zur Homepage der Organisation Umweltbundesamt zu gelangen." style="height:60px; width:148px; border: transparent" /></a></p>
@@ -5208,10 +3696,11 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
+      
+        
+        
       
 
 
@@ -5224,17 +3713,20 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
-      
-
-
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Organisation </th>
+        
+          
+        <!-- 
+      
+
+
+      
+        
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Organisation </th>
             <td>
               
                 <p><a href="https://www.umweltbundesamt.de/" target="_blank">Umweltbundesamt</a></p>
@@ -5252,8 +3744,6 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-      
 
       
       
@@ -5261,8 +3751,8 @@ data-event-label="Change to indicator.sources tab"
 
       
         
-          <tr id="everythingElse">
-            <th scope="row" style="text-align: left">Link zur <br>Datenquelle </th>
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;">Link zur <br>Datenquelle </th>
             <td>
               
                 
@@ -5271,9 +3761,15 @@ data-event-label="Change to indicator.sources tab"
                 
 
                 
+                
+                
+
+                
+                  
                   <a href="https://www.umweltbundesamt.de/daten/umweltindikatoren/indikator-umweltfreundlicher-konsum" target="_blank">
                     Marktanteile von Produkten mit staatlichen Umweltzeichen, nach Umsätzen gewichtet <span class="visuallyhidden">in neuem Fenster öffnen</span>
                   </a>
+                  
                 
 
               
@@ -5289,7 +3785,54 @@ data-event-label="Change to indicator.sources tab"
     
   
       
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
         
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
       
 
       
@@ -5305,23 +3848,103 @@ data-event-label="Change to indicator.sources tab"
     
   
       
-        
-          
+
+      
+      
+
+
       
         
-          
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
+        
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
+      
+
+      
+      
+
+
       
         
-          
-      
+          <tr id="everythingElse" >
+            <th scope="row" style="text-align: left; width: 130px;"> </th>
+            <td>
+              
+                
+                
+                
+                
+
+                
+                
+                
+
+                
+
+              
+            </td>
+          </tr>
         
-          
       
-        
-          
+
+      <!-- weather -->
       
-        
-          
+
+      
+    
+  
+      
+
+      
+      
+
+
+      
+
+      <!-- weather -->
+      
+
+      
+    
+  
   
   
   
@@ -5405,6 +4028,8 @@ data-event-label="Change to indicator.sources tab"
   <a href="#top"></a>
 </div>
 
+
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -5412,23 +4037,22 @@ data-event-label="Change to indicator.sources tab"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Seite basiert auf Open SDG</a>
+                            <a href="https://open-sdg.org" target="_blank" onclick="return confirm_alert('von open-sdg', 'De');">
+                              Seite basiert auf Open SDG
+                            </a>
                         </li>
                         
                         <li>
-                            
-                            <a href="mailto:dns-indikatoren@destatis.de" target="_blank">Kontakt</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="mailto:dns-indikatoren@destatis.de">Kontakt</a>
+                                
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://twitter.com/destatis?lang=de" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>@destatis</a></a>
-                            
-                        </li>
-                        <li>
-                            <a href="/imprint/">Im­pres­s­um</a>
-                            
-                        </li>
+                              <a href="/imprint/ ">Im­pres­s­um</a>
+                              
+                          </li>
                         
                         
                         </ul>
@@ -5443,7 +4067,6 @@ data-event-label="Change to indicator.sources tab"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
@@ -5467,12 +4090,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/assets/js/sdg.js?v=20221125150838'></script>
+<script src='/assets/js/sdg.js?v=20250129075313'></script>
 
 
     
     
-    <script src="/assets/js/custom.js?v=20221125150838"></script><script>
+    <script src="/assets/js/custom.js?v=20250129075313"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
@@ -5480,3 +4103,4 @@ data-event-label="Change to indicator.sources tab"
 
 </body>
 </html>
+

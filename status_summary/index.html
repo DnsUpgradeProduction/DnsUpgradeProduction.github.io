@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex"></script>
+        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
         <script>
@@ -11,7 +11,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: 'https://DnsUpgradeProduction.github.io/dnsupgradeproductiondata/de',
+  remoteDataBaseUrl: 'https://dnsupgradeproduction.github.io/dnsupgradeproductiondata/de',
 
   chartConfigAlterations: [],
   // A hook which can be used to modify the configuration for Chart.js.
@@ -43,6 +43,20 @@ var opensdg = {
   ignoredDisaggregations: null,
 
   language: 'de',
+
+  mapColors: {
+    "default": [
+        "#c4e1c6",
+        "#b0d1b3",
+        "#9bc2a1",
+        "#87b28f",
+        "#74a37c",
+        "#60946b",
+        "#4d8559",
+        "#3a7747",
+        "#276836"
+    ]
+},
 };
 
 </script>
@@ -103,14 +117,11 @@ var translations = {
         ================================================== -->
 
         
-    <title>Statusübersicht - Indikatoren der Deutschen Nachhaltigkeitsstrategie</title>
+    <title>Status der Indikatoren - Übersicht - general.site_title</title>
 
 
 
-        <meta name="description" content="">
-        <meta property="og:description" content="">
         
-        <link rel="canonical" href="/">
 
         <!--[if IE 9]>
         <script src="/assets/js/lib/classList.js"></script>
@@ -121,13 +132,14 @@ var translations = {
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
 <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico" />
 
+        
 
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/assets/css/style.css?v=20221125150838">
+        <link rel="stylesheet" href="/assets/css/style.css?v=20250129075313">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -137,6 +149,9 @@ var translations = {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
         
+
+        
+
 
         <!--[if IE]>
         <link rel="stylesheet" href="/assets/css/ie.css">
@@ -157,24 +172,24 @@ layout-status_summary
     <h2 class="internet-explorer-message-title">Dieser Internet-Browser wird nicht mehr unterstützt</h2>
     <p class="internet-explorer-message-body">Wir haben festgestellt, dass Sie den Internet Explorer verwenden, um diese Website zu besuchen. Der Internet Explorer wird von Microsoft nicht mehr unterstützt. Aus diesem Grund hat diese Website ebenfalls die Unterstützung für alle Versionen des Internet Explorers eingestellt, einige Bereiche auf dieser Website werden daher nicht oder nur eingeschränkt funktionieren. Bitte verwenden Sie einen modernen Browser wie Edge, Chrome, Firefox oder Safari. Wenn Sie Schwierigkeiten haben, einen anderen Browser zu installieren oder darauf zuzugreifen, wenden Sie sich bitte an Ihr IT-Supportteam.</p>
 </div>
-<div id="disclaimer">
+<!-- <div id="disclaimer">
     
 <div class="container">
   <div class="disclaimer-alert">
-    <strong class="phase-tag">beta</strong>
+    <strong class="phase-tag">Alpha-Version</strong>
     
-    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:dns-indikatoren@destatis.de">Kommentare</a>.
+    Diese Seite befindet sich im Entwicklungsstadium. Wir freuen uns über Ihre <a href="mailto:test@example.com">Kommentare</a>.
     
   </div>
 </div>
 
-</div>
+</div> -->
 
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
             <a class="navbar-brand" href="/" id="home" aria-label="" title="">
-    <img src="/assets/img/de/dns_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
+    <img src="/assets/img/de/DNS_logo.png" alt="DESTATIS - Deutsche Nachhaltikeitsstrategie" />
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
                 <span class="navbar-toggler-icon"></span>
@@ -182,42 +197,54 @@ layout-status_summary
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav" id="menu"><li class="nav-item ">
-    <a class="nav-link" href="/">17 Ziele</a>
+    <a class="nav-link" href="/">menu.1_start</a>
 </li>
-<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-status-title" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Bewertung
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-status" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_status
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-status-title"><li class=" active">
-    <a class="dropdown-item" href="/status_summary/">Statusübersicht</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-status"><li class=" ">
+    <a class="dropdown-item" href="/status/">menu.1_status_2_methodology</a>
 </li>
-<li class=" ">
-    <a class="dropdown-item" href="/status/">Methodik</a>
+<li class=" active">
+    <a class="dropdown-item" href="/status_summary/">menu.1_status_2_overview</a>
 </li>
 </ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Über uns
+          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-strategy" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_strategy
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-about"><li class=" ">
-    <a class="dropdown-item" href="/about_platform/">Die&nbspDNS&#8209;Online&nbspPlattform</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-strategy"><li class=" ">
+    <a class="dropdown-item" href="/strategy/dns/">menu.1_strategy_2_dns</a>
 </li>
 <li class=" ">
-    <a class="dropdown-item" href="/about_guidance/">Technische&nbspHinweise</a>
+    <a class="dropdown-item" href="/strategy/monitoring/">menu.1_strategy_2_monitoring</a>
 </li>
-</ul>
-          </li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-facts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Wissenswertes
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-facts"><li class=" ">
-    <a class="dropdown-item" href="/facts_agenda/">Agenda 2030</a>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/publications/">menu.1_strategy_2_publications</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/strategy/links/">menu.1_strategy_2_links</a>
 </li>
 </ul>
           </li><li class="nav-item ">
-    <a class="nav-link" href="/facts_publications/">Publikationen</a>
+    <a class="nav-link" href="/laender/">menu.1_laender</a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link" href="https://www.sdg-indikatoren.de"><img class="link_btn" src="https://g205sdgs.github.io/sdg-indicators/public/SDG Wheel_Transparent.png" title="Klicken Sie hier um zur Seite der SDG Indikatoren zu gelangen" alt="Link SDG" style="width:24px;height:24px;"/></a>
+    <a class="nav-link" href="/menu.1_global_indicators_path">menu.1_global_indicators</a>
+</li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="dropdown-menu-1-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    menu.1_help
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-menu-1-help"><li class=" ">
+    <a class="dropdown-item" href="/help/navigation/">menu.1_help_2_navigation</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/guidance/">menu.1_help_2_guidance</a>
+</li>
+<li class=" ">
+    <a class="dropdown-item" href="/help/faq/">menu.1_help_2_faq</a>
 </li>
 </ul>
+          </li></ul>
 
                 </div>
                 <div class="header-search-bar">
@@ -234,30 +261,7 @@ layout-status_summary
 </form>
 
                 </div>
-                <div class="header-toggles d-flex">
-
-
-
-
-
-  <div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/status_summary/">
-                English
-            </a>
-        </li></ul>
-</div>
-
-
-                    <span class="no-js-language-toggle"><div class="language-toggle-container d-flex">
-    <i class="fa fa-globe language-toggle-globe-links"></i>
-    <ul class="language-toggle-links list-unstyled list-inline"><li class="language-option-en list-inline-item">
-            <a class="language-toggle-link" href="/en/status_summary/">
-                English
-            </a>
-        </li></ul>
-</div></span><a title="" aria-label=""
+                <div class="header-toggles d-flex"><a title="" aria-label=""
     data-contrast-switch-to="" href="javascript:void(0)" data-on="click"
 data-event-category="Accessibility"
 data-event-action="Change contrast setting"
@@ -275,12 +279,24 @@ data-event-label="high"
 
 
 
-<div id="main-content" class="container weathet" role="main">
-  <div class="goal goal-overall">
+<div class="container">
+  <nav>
+    <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
+        <li class="breadcrumb-item" >
+            <a href="/">Start</a>
+        </li>
+        <li class="breadcrumb-item active">Status der Indikatoren - Übersicht</li>
+    </ol>
+</nav>
+</div>
+
+<div id="main-content" class="container weather" role="main">
+  <!-- <button onclick="window.print()">Seite ausdrucken</button> -->
+<div class="goal goal-overall">
     <div class="details">
-        <h2 class="status-goal">
+        <h1>
             Statusübersicht - Bewertung für Deutschland aus den Vorjahren
-        </h2>
+        </h1>
         <div class="container">
           In der Übersichtstabelle sind die Bewertungen der Indikatoren nach Stand der vorhergehenden Jahre angegeben. Daran lässt sich ablesen, ob das Wettersymbol für einen Indikator in den vergangenen Jahren stabil oder eher volatil war.<br> Grundlage der dargestellten Bewertungen sind die Daten des <a href="https://dns-indikatoren.de/assets/publications/reports/de/">Indikatorenberichts 2022</a> mit Datenstand 31.10.2022. Auf der Online-Plattform können aktuellere Daten (als im Indikatorenbericht) verfügbar sein, da die Daten regelmäßig aktualisiert werden.<br><br> <b>Indikatoren mit mehreren Zielen</b><br> Für Indikatoren mit mehreren Zielen, die im Zeitverlauf erfüllt werden sollen (<abbr title="zum Beispiel">z. B.</abbr> Indikator <a href="https://dns-indikatoren.de/status_summary/#7.1.b Primärenergieverbrauch">7.1.b</a>), sind die Bewertungen zur Erfüllung jedes einzelnen Ziels angegeben. Gleiches gilt für Indikatoren mit mehreren Zielen, die zugleich erfüllt werden sollen (<abbr title="zum Beispiel">z. B.</abbr> Indikator <a href="https://dns-indikatoren.de/status_summary/#10.1 Ausländische Schulabsolventinnen und Schulabsolventen">10.1</a>).<br><br> <b>Indikatoren mit Zieländerungen und -verschärfungen</b><br> Neben den aktuell gültigen Zielen der Bundesregierung werden die Ziele dargestellt, die in der Vergangenheit galten, in der Zwischenzeit jedoch geändert und <abbr title="in der Regel">i.d.R.</abbr> verschärft worden sind.<br><br> In ausgegrauter Form werden alle Wettersymbole für Ziele dargestellt, die aktuell keine Gültigkeit haben, weil <br> • das Ziel in der Vergangenheit geändert wurde,<br> • zunächst ein zeitlich näher gelegenes Ziel erfüllt werden muss, oder<br> • das Ziel nur eines von mehreren, zeitgleich zu erfüllenden Zielen ist.<br><br>
         </div>
@@ -290,11 +306,11 @@ data-event-label="high"
 
   <div class="goal reporting-status-item">
     <div>
-        <a href="/1">
+        <a href="/1/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/1.png" alt="Keine Armut - Ziel 1" width="150" height="150" class="goal-icon-1 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/1">Keine Armut</a>
+            <a href="/1/">Keine Armut</a>
         </h3>     -->
     </div>
     <div>
@@ -318,7 +334,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/1-1-ab"><h3 class=responsiveText>1.1.a Materielle Deprivation</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/1-1-ab/"><h3 class=responsiveText>1.1.a Materielle Deprivation</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -387,6 +403,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -507,11 +525,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -619,7 +641,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/1-1-ab"><h3 class=responsiveText>1.1.b Erhebliche materielle Deprivation</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/1-1-ab/"><h3 class=responsiveText>1.1.b Erhebliche materielle Deprivation</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -688,6 +710,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -808,11 +832,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -918,11 +946,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/2">
+        <a href="/2/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/2.png" alt="Kein Hunger - Ziel 2" width="150" height="150" class="goal-icon-2 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/2">Kein Hunger</a>
+            <a href="/2/">Kein Hunger</a>
         </h3>     -->
     </div>
     <div>
@@ -946,7 +974,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/2-1-a"><h3 class=responsiveText>2.1.a Stickstoffüberschuss der Landwirtschaft</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/2-1-a/"><h3 class=responsiveText>2.1.a Stickstoffüberschuss der Landwirtschaft</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -1017,6 +1045,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -1265,7 +1295,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/2-1-b"><h3 class=responsiveText>2.1.b Ökologischer Landbau</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/2-1-b/"><h3 class=responsiveText>2.1.b Ökologischer Landbau</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -1336,6 +1366,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -1465,11 +1497,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 20&nbsp;% bis 2030).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 20&nbsp;% bis 2030).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -1491,6 +1527,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -1731,7 +1775,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/2-2"><h3 class=responsiveText>2.2 Unterstützung guter Regierungsführung bei der Erreichung einer angemessenen Ernährung weltweit</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/2-2/"><h3 class=responsiveText>2.2 Unterstützung guter Regierungsführung bei der Erreichung einer angemessenen Ernährung weltweit</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -1750,6 +1794,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -1952,11 +1998,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/3">
+        <a href="/3/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/3.png" alt="Gesundheit und Wohlergehen - Ziel 3" width="150" height="150" class="goal-icon-3 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/3">Gesundheit und Wohlergehen</a>
+            <a href="/3/">Gesundheit und Wohlergehen</a>
         </h3>     -->
     </div>
     <div>
@@ -1980,7 +2026,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-ab"><h3 class=responsiveText>3.1.a Vorzeitige Sterblichkeit (Frauen)</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-ab/"><h3 class=responsiveText>3.1.a Vorzeitige Sterblichkeit (Frauen)</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -2051,6 +2097,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -2281,7 +2329,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-ab"><h3 class=responsiveText>3.1.b Vorzeitige Sterblichkeit (Männer)</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-ab/"><h3 class=responsiveText>3.1.b Vorzeitige Sterblichkeit (Männer)</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -2352,6 +2400,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -2592,7 +2642,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-cd"><h3 class=responsiveText>3.1.c Raucherquote von Jugendlichen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-cd/"><h3 class=responsiveText>3.1.c Raucherquote von Jugendlichen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -2663,6 +2713,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -2893,7 +2945,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-cd"><h3 class=responsiveText>3.1.d Raucherquote von Erwachsenen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-cd/"><h3 class=responsiveText>3.1.d Raucherquote von Erwachsenen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -2959,6 +3011,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -3184,7 +3238,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-e"><h3 class=responsiveText>3.1.e Adipositasquote von Kindern und Jugendlichen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-e/"><h3 class=responsiveText>3.1.e Adipositasquote von Kindern und Jugendlichen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -3203,6 +3257,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -3417,7 +3473,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-f"><h3 class=responsiveText>3.1.f Adipositasquote von Erwachsenen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-1-f/"><h3 class=responsiveText>3.1.f Adipositasquote von Erwachsenen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -3483,6 +3539,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -3717,7 +3775,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-2-a"><h3 class=responsiveText>3.2.a Emissionen von Luftschadstoffen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-2-a/"><h3 class=responsiveText>3.2.a Emissionen von Luftschadstoffen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -3788,6 +3846,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -4036,7 +4096,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-2-b"><h3 class=responsiveText>3.2.b Anteil der Bevölkerung mit erhöhter PM₁₀-Feinstaubexposition</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-2-b/"><h3 class=responsiveText>3.2.b Anteil der Bevölkerung mit erhöhter PM₁₀-Feinstaubexposition</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -4107,6 +4167,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -4356,7 +4418,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/3-3"><h3 class=responsiveText>3.3 Beitrag Deutschlands zur globalen Pandemieprävention und -reaktion</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/3-3/"><h3 class=responsiveText>3.3 Beitrag Deutschlands zur globalen Pandemieprävention und -reaktion</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -4422,6 +4484,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -4643,11 +4707,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/4">
+        <a href="/4/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/4.png" alt="Hochwertige Bildung - Ziel 4" width="150" height="150" class="goal-icon-4 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/4">Hochwertige Bildung</a>
+            <a href="/4/">Hochwertige Bildung</a>
         </h3>     -->
     </div>
     <div>
@@ -4671,7 +4735,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/4-1-a"><h3 class=responsiveText>4.1.a Frühe Schulabgängerinnen und Schulabgänger</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/4-1-a/"><h3 class=responsiveText>4.1.a Frühe Schulabgängerinnen und Schulabgänger</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -4742,6 +4806,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -4871,11 +4937,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 10&nbsp;% bis 2020).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 10&nbsp;% bis 2020).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -4897,6 +4967,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -5138,7 +5216,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/4-1-b"><h3 class=responsiveText>4.1.b Akademisch Qualifizierte und beruflich Höherqualifizierte (30- bis 34-Jährige mit tertiärem oder post-sekundarem nichttertiärem Abschluss)</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/4-1-b/"><h3 class=responsiveText>4.1.b Akademisch Qualifizierte und beruflich Höherqualifizierte (30- bis 34-Jährige mit tertiärem oder post-sekundarem nichttertiärem Abschluss)</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -5209,6 +5287,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -5338,11 +5418,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 42&nbsp;% bis 2020).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 42&nbsp;% bis 2020).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -5364,6 +5448,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -5606,7 +5698,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/4-2-ab"><h3 class=responsiveText>4.2.a Ganztagsbetreuung für Kinder <br>0- bis 2-Jährige</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/4-2-ab/"><h3 class=responsiveText>4.2.a Ganztagsbetreuung für Kinder <br>0- bis 2-Jährige</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -5677,6 +5769,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -5907,7 +6001,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/4-2-ab"><h3 class=responsiveText>4.2.b Ganztagsbetreuung für Kinder <br>3- bis 5-Jährige</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/4-2-ab/"><h3 class=responsiveText>4.2.b Ganztagsbetreuung für Kinder <br>3- bis 5-Jährige</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -5978,6 +6072,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -6106,11 +6202,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -6132,6 +6232,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -6349,11 +6457,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/5">
+        <a href="/5/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/5.png" alt="Geschlechtergleichheit - Ziel 5" width="150" height="150" class="goal-icon-5 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/5">Geschlechtergleichheit</a>
+            <a href="/5/">Geschlechtergleichheit</a>
         </h3>     -->
     </div>
     <div>
@@ -6377,7 +6485,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-a"><h3 class=responsiveText>5.1.a Verdienstabstand zwischen Frauen und Männern</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-a/"><h3 class=responsiveText>5.1.a Verdienstabstand zwischen Frauen und Männern</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -6448,6 +6556,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -6576,11 +6686,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -6602,6 +6716,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -6839,7 +6961,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-bc"><h3 class=responsiveText>5.1.b In Aufsichtsräten der börsennotierten und paritätisch mitbestimmten Unternehmen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-bc/"><h3 class=responsiveText>5.1.b In Aufsichtsräten der börsennotierten und paritätisch mitbestimmten Unternehmen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -6906,6 +7028,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -7124,7 +7248,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-bc"><h3 class=responsiveText>5.1.c Im öffentlichen Dienst des Bundes</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-bc/"><h3 class=responsiveText>5.1.c Im öffentlichen Dienst des Bundes</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -7195,6 +7319,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -7435,7 +7561,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-d"><h3 class=responsiveText>5.1.d Väterbeteiligung beim Elterngeld</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-d/"><h3 class=responsiveText>5.1.d Väterbeteiligung beim Elterngeld</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -7506,6 +7632,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -7755,7 +7883,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-e"><h3 class=responsiveText>5.1.e Berufliche Qualifizierung von Frauen und Mädchen durch deutsche entwicklungspolitische Zusammenarbeit</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/5-1-e/"><h3 class=responsiveText>5.1.e Berufliche Qualifizierung von Frauen und Mädchen durch deutsche entwicklungspolitische Zusammenarbeit</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -7774,6 +7902,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -7976,11 +8106,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/6">
+        <a href="/6/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/6.png" alt="Sauberes Wasser und Sanitäreinrichtungen - Ziel 6" width="150" height="150" class="goal-icon-6 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/6">Sauberes Wasser und Sanitäreinrichtungen</a>
+            <a href="/6/">Sauberes Wasser und Sanitäreinrichtungen</a>
         </h3>     -->
     </div>
     <div>
@@ -8004,7 +8134,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/6-1-a"><h3 class=responsiveText>6.1.a Phosphor in Fließgewässern</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/6-1-a/"><h3 class=responsiveText>6.1.a Phosphor in Fließgewässern</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -8075,6 +8205,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -8323,7 +8455,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/6-1-b"><h3 class=responsiveText>6.1.b Nitrat im Grundwasser</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/6-1-b/"><h3 class=responsiveText>6.1.b Nitrat im Grundwasser</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -8394,6 +8526,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -8643,7 +8777,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab"><h3 class=responsiveText>6.2 Anzahl der Menschen, die einen neuen oder hochwertigeren Zugang zur Trinkwasserversorgung oder Anschluss zur Sanitärversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab/"><h3 class=responsiveText>6.2 Anzahl der Menschen, die einen neuen oder hochwertigeren Zugang zur Trinkwasserversorgung oder Anschluss zur Sanitärversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -8711,6 +8845,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -8830,11 +8966,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Seit 2019&nbsp;wird die Zeitreihe für die Bereiche Trinkwasserversorgung und Sanitärversorgung getrennt ausgewiesen.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText style="opacity: 0.5">Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%; opacity: 0.5"> <div class=responsiveText>Seit 2019&nbsp;wird die Zeitreihe für die Bereiche Trinkwasserversorgung und Sanitärversorgung getrennt ausgewiesen.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -8942,7 +9082,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab"><h3 class=responsiveText>6.2.a Anzahl der Menschen, die einen neuen oder hochwertigeren Zugang zur Trinkwasserversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab/"><h3 class=responsiveText>6.2.a Anzahl der Menschen, die einen neuen oder hochwertigeren Zugang zur Trinkwasserversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -8961,6 +9101,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -9157,7 +9299,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab"><h3 class=responsiveText>6.2.b Anzahl der Menschen, die einen neuen oder verbesserten Anschluss zur Sanitärversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/6-2-ab/"><h3 class=responsiveText>6.2.b Anzahl der Menschen, die einen neuen oder verbesserten Anschluss zur Sanitärversorgung durch deutsche Unterstützung erhalten</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -9176,6 +9318,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -9362,11 +9506,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/7">
+        <a href="/7/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/7.png" alt="Bezahlbare und saubere Energie - Ziel 7" width="150" height="150" class="goal-icon-7 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/7">Bezahlbare und saubere Energie</a>
+            <a href="/7/">Bezahlbare und saubere Energie</a>
         </h3>     -->
     </div>
     <div>
@@ -9390,7 +9534,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/7-1-ab"><h3 class=responsiveText>7.1.a Endenergieproduktivität</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/7-1-ab/"><h3 class=responsiveText>7.1.a Endenergieproduktivität</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -9461,6 +9605,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -9691,7 +9837,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/7-1-ab"><h3 class=responsiveText>7.1.b Primärenergieverbrauch</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/7-1-ab/"><h3 class=responsiveText>7.1.b Primärenergieverbrauch</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -9762,6 +9908,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -9890,11 +10038,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -9916,6 +10068,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -10060,6 +10220,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -10279,7 +10447,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/7-2-a"><h3 class=responsiveText>7.2.a Anteil erneuerbarer Energien am Brutto-Endenergieverbrauch</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/7-2-a/"><h3 class=responsiveText>7.2.a Anteil erneuerbarer Energien am Brutto-Endenergieverbrauch</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -10350,6 +10518,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -10478,11 +10648,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -10504,6 +10678,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -10648,6 +10830,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -10792,6 +10982,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11007,7 +11205,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/7-2-b"><h3 class=responsiveText>7.2.b Anteil des Stroms aus erneuerbaren Energiequellen am Bruttostromverbrauch</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/7-2-b/"><h3 class=responsiveText>7.2.b Anteil des Stroms aus erneuerbaren Energiequellen am Bruttostromverbrauch</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -11078,6 +11276,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -11206,11 +11406,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -11232,6 +11436,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11361,11 +11573,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 65&nbsp;% bis 2030).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 65&nbsp;% bis 2030).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -11387,6 +11603,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11533,6 +11757,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11679,6 +11911,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11825,6 +12065,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -11971,6 +12219,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -12143,11 +12399,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/8">
+        <a href="/8/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/8.png" alt="Menschenwürdige Arbeit und Wirtschaftswachstum - Ziel 8" width="150" height="150" class="goal-icon-8 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/8">Menschenwürdige Arbeit und Wirtschaftswachstum</a>
+            <a href="/8/">Menschenwürdige Arbeit und Wirtschaftswachstum</a>
         </h3>     -->
     </div>
     <div>
@@ -12171,7 +12427,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-1"><h3 class=responsiveText>8.1 Gesamtrohstoffproduktivität</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-1/"><h3 class=responsiveText>8.1 Gesamtrohstoffproduktivität</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -12242,6 +12498,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -12491,7 +12749,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-ab"><h3 class=responsiveText>8.2.a Staatsdefizit</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-ab/"><h3 class=responsiveText>8.2.a Staatsdefizit</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -12562,6 +12820,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -12792,7 +13052,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-ab"><h3 class=responsiveText>8.2.b Strukturelles Defizit</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-ab/"><h3 class=responsiveText>8.2.b Strukturelles Defizit</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -12863,6 +13123,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -13103,7 +13365,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-c"><h3 class=responsiveText>8.2.c Schuldenstand</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-2-c/"><h3 class=responsiveText>8.2.c Schuldenstand</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -13174,6 +13436,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -13423,7 +13687,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-3"><h3 class=responsiveText>8.3 Verhältnis der Bruttoanlageinvestitionen zum BIP</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-3/"><h3 class=responsiveText>8.3 Verhältnis der Bruttoanlageinvestitionen zum BIP</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -13494,6 +13758,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -13743,7 +14009,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-4"><h3 class=responsiveText>8.4 Bruttoinlandsprodukt je Einwohner</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-4/"><h3 class=responsiveText>8.4 Bruttoinlandsprodukt je Einwohner</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -13814,6 +14080,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -14063,7 +14331,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-5-ab"><h3 class=responsiveText>8.5.a Erwerbstätigenquote insgesamt (20 bis 64 Jahre)</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-5-ab/"><h3 class=responsiveText>8.5.a Erwerbstätigenquote insgesamt (20 bis 64 Jahre)</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -14134,6 +14402,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -14364,7 +14634,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-5-ab"><h3 class=responsiveText>8.5.b Erwerbstätigenquote Ältere (60 bis 64 Jahre)</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-5-ab/"><h3 class=responsiveText>8.5.b Erwerbstätigenquote Ältere (60 bis 64 Jahre)</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -14435,6 +14705,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -14676,7 +14948,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/8-6"><h3 class=responsiveText>8.6 Mitglieder des Textilbündnisses</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/8-6/"><h3 class=responsiveText>8.6 Mitglieder des Textilbündnisses</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -14743,6 +15015,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -14967,11 +15241,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/9">
+        <a href="/9/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/9.png" alt="Industrie, Innovationen und Infrastruktur - Ziel 9" width="150" height="150" class="goal-icon-9 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/9">Industrie, Innovationen und Infrastruktur</a>
+            <a href="/9/">Industrie, Innovationen und Infrastruktur</a>
         </h3>     -->
     </div>
     <div>
@@ -14995,7 +15269,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/9-1-a"><h3 class=responsiveText>9.1.a Private und öffentliche Ausgaben für Forschung und Entwicklung</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/9-1-a/"><h3 class=responsiveText>9.1.a Private und öffentliche Ausgaben für Forschung und Entwicklung</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -15066,6 +15340,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -15195,11 +15471,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 3&nbsp;% bis 2030).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 3&nbsp;% bis 2030).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -15221,6 +15501,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -15460,7 +15748,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/9-1-b"><h3 class=responsiveText>9.1.b Breitbandausbau – Anteil der Haushalte mit Zugang zu Gigabit-Breitbandversorgung</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/9-1-b/"><h3 class=responsiveText>9.1.b Breitbandausbau – Anteil der Haushalte mit Zugang zu Gigabit-Breitbandversorgung</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -15479,6 +15767,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -15681,11 +15971,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/10">
+        <a href="/10/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/10.png" alt="Weniger Ungleichheiten - Ziel 10" width="150" height="150" class="goal-icon-10 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/10">Weniger Ungleichheiten</a>
+            <a href="/10/">Weniger Ungleichheiten</a>
         </h3>     -->
     </div>
     <div>
@@ -15709,7 +15999,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/10-1"><h3 class=responsiveText>10.1 Ausländische Schulabsolventinnen und Schulabsolventen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/10-1/"><h3 class=responsiveText>10.1 Ausländische Schulabsolventinnen und Schulabsolventen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -15780,6 +16070,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -15924,6 +16216,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -16068,6 +16368,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -16194,11 +16502,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Beide Ziele „Erhöhung des Anteils der ausländischen Schulabgänger mit mindestens Hauptschulabschluss“ und „Angleichung des Anteils an die Quote deutscher Schulabgänger“ sollen parallel erfüllt werden, sodass für die Gesamtbewertung des Indikators die Einzelbewertungen zusammengeführt werden, indem jeweils das "schlechtere" Wettersymbol übernommen wird.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Beide Ziele „Erhöhung des Anteils der ausländischen Schulabgänger mit mindestens Hauptschulabschluss“ und „Angleichung des Anteils an die Quote deutscher Schulabgänger“ sollen parallel erfüllt werden, sodass für die Gesamtbewertung des Indikators die Einzelbewertungen zusammengeführt werden, indem jeweils das "schlechtere" Wettersymbol übernommen wird.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -16303,7 +16615,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/10-2"><h3 class=responsiveText>10.2 Gini-Koeffizient des Einkommens nach Sozialtransfers</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/10-2/"><h3 class=responsiveText>10.2 Gini-Koeffizient des Einkommens nach Sozialtransfers</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -16372,6 +16684,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -16492,11 +16806,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -16610,11 +16928,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/11">
+        <a href="/11/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/11.png" alt="Nachhaltige Städte und Gemeinden - Ziel 11" width="150" height="150" class="goal-icon-11 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/11">Nachhaltige Städte und Gemeinden</a>
+            <a href="/11/">Nachhaltige Städte und Gemeinden</a>
         </h3>     -->
     </div>
     <div>
@@ -16638,7 +16956,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-a"><h3 class=responsiveText>11.1.a Anstieg der Siedlungs- und Verkehrsfläche in ha pro Tag</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-a/"><h3 class=responsiveText>11.1.a Anstieg der Siedlungs- und Verkehrsfläche in ha pro Tag</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -16709,6 +17027,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -16957,7 +17277,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-b"><h3 class=responsiveText>11.1.b Freiraumverlust</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-b/"><h3 class=responsiveText>11.1.b Freiraumverlust</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -17028,6 +17348,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -17276,7 +17598,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-c"><h3 class=responsiveText>11.1.c Siedlungsdichte</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-1-c/"><h3 class=responsiveText>11.1.c Siedlungsdichte</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -17347,6 +17669,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -17596,7 +17920,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-a"><h3 class=responsiveText>11.2.a Endenergieverbrauch im Güterverkehr</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-a/"><h3 class=responsiveText>11.2.a Endenergieverbrauch im Güterverkehr</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -17667,6 +17991,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -17915,7 +18241,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-b"><h3 class=responsiveText>11.2.b Endenergieverbrauch im Personenverkehr</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-b/"><h3 class=responsiveText>11.2.b Endenergieverbrauch im Personenverkehr</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -17986,6 +18312,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -18234,7 +18562,7 @@ data-event-label="high"
                   
                     <th width="14.68%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-c"><h3 class=responsiveText>11.2.c Erreichbarkeit von Mittel- und Oberzentren mit öffentlichen Verkehrsmitteln</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-2-c/"><h3 class=responsiveText>11.2.c Erreichbarkeit von Mittel- und Oberzentren mit öffentlichen Verkehrsmitteln</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -18253,6 +18581,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -18468,7 +18798,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-3"><h3 class=responsiveText>11.3 Überlastung durch Wohnkosten</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-3/"><h3 class=responsiveText>11.3 Überlastung durch Wohnkosten</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -18537,6 +18867,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -18657,11 +18989,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Die bislang separat durchgeführte Erhebung 'Leben in Europa' (<abbr title="Europäische Union">EU</abbr>-SILC) wurde 2020&nbsp;in den Mikrozensus als Unterstichprobe integriert. Durch den Wechsel von einer freiwilligen zu einer in Teilen auskunftspflichtigen Befragung verbunden mit einer neuen Stichprobenzusammensetzung ist ein Vergleich der Daten des Erhebungsjahres 2020&nbsp;mit den Vorjahren und die Berechnung der Wettersymbole nicht möglich (Zeitreihenbruch).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -18788,7 +19124,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/11-4"><h3 class=responsiveText>11.4 Zahl der Objekte in der Deutschen Digitalen Bibliothek</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/11-4/"><h3 class=responsiveText>11.4 Zahl der Objekte in der Deutschen Digitalen Bibliothek</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -18859,6 +19195,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -19095,11 +19433,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/12">
+        <a href="/12/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/12.png" alt="Nachhaltige/r Konsum und Produktion - Ziel 12" width="150" height="150" class="goal-icon-12 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/12">Nachhaltige/r Konsum und Produktion</a>
+            <a href="/12/">Nachhaltige/r Konsum und Produktion</a>
         </h3>     -->
     </div>
     <div>
@@ -19123,7 +19461,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-a"><h3 class=responsiveText>12.1.a Marktanteil von Produkten mit staatlichen Umweltzeichen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-a/"><h3 class=responsiveText>12.1.a Marktanteil von Produkten mit staatlichen Umweltzeichen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -19190,6 +19528,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -19426,7 +19766,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b"><h3 class=responsiveText>12.1.ba Direkter und indirrekter Rohstoffeinsatz</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b/"><h3 class=responsiveText>12.1.ba Direkter und indirrekter Rohstoffeinsatz</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -19494,6 +19834,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -19715,7 +20057,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b"><h3 class=responsiveText>12.1.bb Direkter und indirrekter Energieverbrauch</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b/"><h3 class=responsiveText>12.1.bb Direkter und indirrekter Energieverbrauch</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -19783,6 +20125,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -20004,7 +20348,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b"><h3 class=responsiveText>12.1.bc Direkte und indirrekte CO₂-Emissionen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-1-b/"><h3 class=responsiveText>12.1.bc Direkte und indirrekte CO₂-Emissionen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -20072,6 +20416,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -20296,7 +20642,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-2"><h3 class=responsiveText>12.2 Umweltmanagement EMAS</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-2/"><h3 class=responsiveText>12.2 Umweltmanagement EMAS</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -20367,6 +20713,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -20616,7 +20964,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-3-ab"><h3 class=responsiveText>12.3.a Anteil des Papiers mit Blauem Engel am Gesamtpapierverbrauch der unmittelbaren Bundesverwaltung</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-3-ab/"><h3 class=responsiveText>12.3.a Anteil des Papiers mit Blauem Engel am Gesamtpapierverbrauch der unmittelbaren Bundesverwaltung</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -20681,6 +21029,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -20893,7 +21243,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/12-3-ab"><h3 class=responsiveText>12.3.b CO₂-Emissionen von handelsüblichen Kraftfahrzeugen der öffentlichen Hand</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/12-3-ab/"><h3 class=responsiveText>12.3.b CO₂-Emissionen von handelsüblichen Kraftfahrzeugen der öffentlichen Hand</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -20958,6 +21308,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -21168,11 +21520,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/13">
+        <a href="/13/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/13.png" alt="Maßnahmen zum Klimaschutz - Ziel 13" width="150" height="150" class="goal-icon-13 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/13">Maßnahmen zum Klimaschutz</a>
+            <a href="/13/">Maßnahmen zum Klimaschutz</a>
         </h3>     -->
     </div>
     <div>
@@ -21196,7 +21548,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/13-1-a"><h3 class=responsiveText>13.1.a Treibhausgasemissionen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/13-1-a/"><h3 class=responsiveText>13.1.a Treibhausgasemissionen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -21267,6 +21619,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -21395,11 +21749,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -21421,6 +21779,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -21550,11 +21916,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: mindestens 55&nbsp;% bis 2030&nbsp;gegenüber 1990; Erreichung von Treibhausgasneutralität bis 2050).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: mindestens 55&nbsp;% bis 2030&nbsp;gegenüber 1990; Erreichung von Treibhausgasneutralität bis 2050).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -21576,6 +21946,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -21723,6 +22101,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -21870,6 +22256,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -22016,6 +22410,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -22162,6 +22564,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -22308,6 +22718,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -22482,7 +22900,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/13-1-b"><h3 class=responsiveText>13.1.b Internationale Klimafinanzierung zur Reduktion von Treibhausgasen und zur Anpassung an den Klimawandel</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/13-1-b/"><h3 class=responsiveText>13.1.b Internationale Klimafinanzierung zur Reduktion von Treibhausgasen und zur Anpassung an den Klimawandel</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -22552,6 +22970,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -22677,11 +23097,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Eine Verdopplung der internationalen Klimafinanzierung von 2014&nbsp;entsprach einer Erhöhung auf 4&nbsp;<abbr title="Milliarde">Mrd.</abbr> Euro.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Eine Verdopplung der internationalen Klimafinanzierung von 2014&nbsp;entsprach einer Erhöhung auf 4&nbsp;<abbr title="Milliarde">Mrd.</abbr> Euro.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -22703,6 +23127,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -22829,11 +23261,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -22936,11 +23372,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/14">
+        <a href="/14/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/14.png" alt="Leben unter Wasser - Ziel 14" width="150" height="150" class="goal-icon-14 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/14">Leben unter Wasser</a>
+            <a href="/14/">Leben unter Wasser</a>
         </h3>     -->
     </div>
     <div>
@@ -22964,7 +23400,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-a"><h3 class=responsiveText>14.1.aa Stickstoffeinträge in Küsten- und Meeresgewässer der Ostsee</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-a/"><h3 class=responsiveText>14.1.aa Stickstoffeinträge in Küsten- und Meeresgewässer der Ostsee</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -23035,6 +23471,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -23265,7 +23703,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-a"><h3 class=responsiveText>14.1.ab Stickstoffeinträge in Küsten- und Meeresgewässer der Nordsee</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-a/"><h3 class=responsiveText>14.1.ab Stickstoffeinträge in Küsten- und Meeresgewässer der Nordsee</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -23336,6 +23774,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -23576,7 +24016,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-b"><h3 class=responsiveText>14.1.b Anteil der nachhaltig befischten Fischbestände in Nord- und Ostsee</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/14-1-b/"><h3 class=responsiveText>14.1.b Anteil der nachhaltig befischten Fischbestände in Nord- und Ostsee</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -23647,6 +24087,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -23883,11 +24325,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/15">
+        <a href="/15/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/15.png" alt="Leben an Land - Ziel 15" width="150" height="150" class="goal-icon-15 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/15">Leben an Land</a>
+            <a href="/15/">Leben an Land</a>
         </h3>     -->
     </div>
     <div>
@@ -23911,7 +24353,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/15-1"><h3 class=responsiveText>15.1 Artenvielfalt und Landschaftsqualität</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/15-1/"><h3 class=responsiveText>15.1 Artenvielfalt und Landschaftsqualität</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -23982,6 +24424,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -24231,7 +24675,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/15-2"><h3 class=responsiveText>15.2 Eutrophierung der Ökosysteme</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/15-2/"><h3 class=responsiveText>15.2 Eutrophierung der Ökosysteme</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -24298,6 +24742,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -24535,7 +24981,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/15-3-ab"><h3 class=responsiveText>15.3.a Erhalt bzw. Wiederaufbau von Wäldern in Entwicklungsländern unter dem REDD+-Regelwerk</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/15-3-ab/"><h3 class=responsiveText>15.3.a Erhalt bzw. Wiederaufbau von Wäldern in Entwicklungsländern unter dem REDD+-Regelwerk</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -24606,6 +25052,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -24836,7 +25284,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/15-3-ab"><h3 class=responsiveText>15.3.b Deutsche bilaterale Bruttoentwicklungsausgaben zur Umsetzung des Übereinkommens der VN zur Bekämpfung der Wüstenbildung</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/15-3-ab/"><h3 class=responsiveText>15.3.b Deutsche bilaterale Bruttoentwicklungsausgaben zur Umsetzung des Übereinkommens der VN zur Bekämpfung der Wüstenbildung</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -24907,6 +25355,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -25135,11 +25585,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/16">
+        <a href="/16/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/16.png" alt="Frieden, Gerechtigkeit und starke Institutionen - Ziel 16" width="150" height="150" class="goal-icon-16 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/16">Frieden, Gerechtigkeit und starke Institutionen</a>
+            <a href="/16/">Frieden, Gerechtigkeit und starke Institutionen</a>
         </h3>     -->
     </div>
     <div>
@@ -25163,7 +25613,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/16-1"><h3 class=responsiveText>16.1 Straftaten</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/16-1/"><h3 class=responsiveText>16.1 Straftaten</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -25234,6 +25684,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -25363,11 +25815,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 7&nbsp;000&nbsp;bis 2030).</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Neues Ziel im Rahmen der Weiterentwicklung von Zielen der Deutschen Nachhaltigkeitsstrategie (vorher: 7&nbsp;000&nbsp;bis 2030).</div> </td>
+                        
+
                       </tr>
                     
 
@@ -25389,6 +25845,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -25629,7 +26093,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/16-2"><h3 class=responsiveText>16.2 Anzahl der in betroffenen Weltregionen durchgeführten Projekte zur Sicherung, Registrierung und Zerstörung von Kleinwaffen und leichten Waffen durch Deutschland</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/16-2/"><h3 class=responsiveText>16.2 Anzahl der in betroffenen Weltregionen durchgeführten Projekte zur Sicherung, Registrierung und Zerstörung von Kleinwaffen und leichten Waffen durch Deutschland</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -25700,6 +26164,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -25949,7 +26415,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/16-3-ab"><h3 class=responsiveText>16.3.a Corruption Perception Index in Deutschland</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/16-3-ab/"><h3 class=responsiveText>16.3.a Corruption Perception Index in Deutschland</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -26018,6 +26484,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -26242,7 +26710,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/16-3-ab"><h3 class=responsiveText>16.3.b Anzahl der Partnerländer deutscher Entwicklungszusammenarbeit, deren Bewertung sich gegenüber 2012 verbessert hat</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/16-3-ab/"><h3 class=responsiveText>16.3.b Anzahl der Partnerländer deutscher Entwicklungszusammenarbeit, deren Bewertung sich gegenüber 2012 verbessert hat</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -26310,6 +26778,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -26529,11 +26999,11 @@ data-event-label="high"
     <br style="clear:both;">
   </div> <!--class="goal"--><div class="goal reporting-status-item">
     <div>
-        <a href="/17">
+        <a href="/17/">
         <img src="https://g205sdgs.github.io/sdg-indicators/assets/img/goals/dns/de/17.png" alt="Partnerschaften zur Erreichung der Ziele - Ziel 17" width="150" height="150" class="goal-icon-17 goal-icon-image goal-icon-image-"/>
         </a>
         <!-- <h3 class="status-goal">
-            <a href="/17">Partnerschaften zur Erreichung der Ziele</a>
+            <a href="/17/">Partnerschaften zur Erreichung der Ziele</a>
         </h3>     -->
     </div>
     <div>
@@ -26557,7 +27027,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/17-1"><h3 class=responsiveText>17.1 Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/17-1/"><h3 class=responsiveText>17.1 Anteil öffentlicher Entwicklungsausgaben am Bruttonationaleinkommen</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -26628,6 +27098,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -26877,7 +27349,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/17-2"><h3 class=responsiveText>17.2 Anzahl der Studierenden und Forschenden aus Entwicklungsländern sowie LDCs pro Jahr</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/17-2/"><h3 class=responsiveText>17.2 Anzahl der Studierenden und Forschenden aus Entwicklungsländern sowie LDCs pro Jahr</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -26948,6 +27420,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -27076,11 +27550,15 @@ data-event-label="high"
 
                     
                       <tr>
-                        <th>
-                          <div class=responsiveText>Anmerkung
-                          </div>
-                        </th>
-                        <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+
+                        
+                          <th>
+                            <div class=responsiveText>Anmerkung
+                            </div>
+                          </th>
+                          <td colspan="7" style="padding-left: 4%"> <div class=responsiveText>Wegfall des Ziels für 2020&nbsp;wegen zeitlichen Ablaufs.</div> </td>
+                        
+
                       </tr>
                     
 
@@ -27102,6 +27580,14 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+                    <tr>
+                      <th>
+                      </th>
+                      <td colspan="7" style="padding-left: 4%"> <div class=responsiveText></div> </td>
+                    </tr>
+                  
+
                     <tr>
                       <th>
                         
@@ -27340,7 +27826,7 @@ data-event-label="high"
                   
                     <th width="12%"> <h3 class=responsiveText>Indikator</h3> </th>
                   
-                  <th colspan="7" style="padding-left: 4%"> <a href="/17-3"><h3 class=responsiveText>17.3 Einfuhren aus am wenigsten entwickelten Ländern</h3></a> </th>
+                  <th colspan="7" style="padding-left: 4%"> <a href="/17-3/"><h3 class=responsiveText>17.3 Einfuhren aus am wenigsten entwickelten Ländern</h3></a> </th>
                 </tr>
                 <!-- !!!!!!!!!!!!!!!!-->
                 <!-- YEAR !!!!!!!!!!!!!!!!-->
@@ -27411,6 +27897,8 @@ data-event-label="high"
                     <!--weather_indicator_2_target_1_targetYear-->
 
                   
+                  
+
                     <tr>
                       <th>
                         
@@ -27649,6 +28137,7 @@ data-event-label="high"
 
   <a href="#top"></a>
 </div>
+
 <footer role="contentinfo">
     <div class="container">
         <div class="row">
@@ -27656,23 +28145,22 @@ data-event-label="high"
                 <div id="footerLinks">
                     <ul>
                         <li>
-                            <a href="https://open-sdg.org">Seite basiert auf Open SDG</a>
+                            <a href="https://open-sdg.org" target="_blank" onclick="return confirm_alert('von open-sdg', 'De');">
+                              Seite basiert auf Open SDG
+                            </a>
                         </li>
                         
                         <li>
-                            
-                            <a href="mailto:dns-indikatoren@destatis.de" target="_blank">Kontakt</a>
-                            
-                        </li>
+                              
+                                
+                                  <a href="mailto:dns-indikatoren@destatis.de">Kontakt</a>
+                                
+                              
+                          </li>
                         <li>
-                            
-                            <a href="https://twitter.com/destatis?lang=de" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>@destatis</a></a>
-                            
-                        </li>
-                        <li>
-                            <a href="/imprint/">Im­pres­s­um</a>
-                            
-                        </li>
+                              <a href="/imprint/ ">Im­pres­s­um</a>
+                              
+                          </li>
                         
                         
                         </ul>
@@ -27687,7 +28175,6 @@ data-event-label="high"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="//cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js" integrity="sha256-Y26AMvaIfrZ1EQU49pf6H4QzVTrOI8m9wQYKkftBt4s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
@@ -27709,12 +28196,12 @@ data-event-label="high"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/assets/js/sdg.js?v=20221125150838'></script>
+<script src='/assets/js/sdg.js?v=20250129075313'></script>
 
 
     
     
-    <script src="/assets/js/custom.js?v=20221125150838"></script><script>
+    <script src="/assets/js/custom.js?v=20250129075313"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>
@@ -27722,3 +28209,4 @@ data-event-label="high"
 
 </body>
 </html>
+

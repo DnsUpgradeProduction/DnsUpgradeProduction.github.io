@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=Promise%2CArray.prototype.forEach%2CString.prototype.includes%2CURLSearchParams%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.filter%2CArray.prototype.some%2CArray.prototype.find%2CArray.prototype.reduce%2CObject.assign%2CArray.isArray%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=Promise%2CString.prototype.includes%2CCustomEvent%2CArray.prototype.includes%2CArray.prototype.find%2CObject.assign%2CObject.values%2CObject.entries%2CArray.from%2CSet%2CArray.prototype.findIndex%2Cfetch"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.15.0/js/canvas-to-blob.min.js"></script>
 
         <script>
@@ -144,7 +144,7 @@ var translations = {
         <link res="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" crossorigin="">
         <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css" crossorigin="">
-        <link rel="stylesheet" href="/assets/css/style.css?v=20250210134048">
+        <link rel="stylesheet" href="/assets/css/style.css?v=20250213135941">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
           crossorigin=""/>
@@ -316,7 +316,7 @@ layout-indicator-iframe
   data-id="12-3-abc"
   data-country="Deutschland"
   data-charttitle="Nachhaltige Beschaffung"
-  data-charttitles="[{&quot;series&quot;:&quot;b) CO₂-Emissionen je Fahrleistungen der Kraftfahrzeuge&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;},{&quot;series&quot;:&quot;a) Nachhaltige Vergabeverfahren&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;},{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;}]"
+  data-charttitles="[{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;},{&quot;series&quot;:&quot;b) CO₂-Emissionen je Fahrleistungen der Kraftfahrzeuge&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;},{&quot;series&quot;:&quot;a) Nachhaltige Vergabeverfahren&quot;,&quot;title&quot;:&quot;Nachhaltige öffentliche Beschaffung&quot;}]"
   data-chartsubtitle=""
   data-chartsubtitles="[{&quot;series&quot;:&quot;a) Nachhaltige Vergabeverfahren&quot;,&quot;title&quot;:&quot;a) Vergabeverfahren in der öffentlichen Beschaffung, bei denen mindestens ein Nachhaltigkeitskriterium berücksichtigt wurde&quot;},{&quot;series&quot;:&quot;b) CO₂-Emissionen je Fahrleistungen der Kraftfahrzeuge&quot;,&quot;title&quot;:&quot;b) CO₂-Emissionen je Fahrleistungen der Kraftfahrzeuge der öffentlichen Hand&quot;},{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;title&quot;:&quot;c) Nachhaltige Textilbeschaffung der Bundesverwaltung  (exklusive Sondertextilien)&quot;}]"
   data-measurementunit=""
@@ -332,6 +332,7 @@ layout-indicator-iframe
   data-stackeddisaggregation=""
   data-showline="true"
   data-spangaps="true"
+  data-mixedtypes="null"
   data-graphannotations="[{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;value&quot;:50,&quot;label&quot;:{&quot;content&quot;:&quot;Ziel 2026&quot;,&quot;position&quot;:&quot;left&quot;,&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;color&quot;:&quot;transparent&quot;},&quot;preset&quot;:&quot;target_line&quot;,&quot;borderColor&quot;:&quot;transparent&quot;}]"
   data-graphtargetlines="null"
   data-graphtargetpoints="[{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;type&quot;:&quot;box&quot;,&quot;xMin&quot;:8.685,&quot;xMax&quot;:9.315,&quot;yMin&quot;:0,&quot;yMax&quot;:50,&quot;borderColor&quot;:&quot;#bf8b2e&quot;,&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;borderDash&quot;:[1,0],&quot;borderWidth&quot;:2,&quot;preset&quot;:&quot;target_points&quot;},{&quot;series&quot;:&quot;c) Nachhaltige Textilbeschaffung&quot;,&quot;type&quot;:&quot;label&quot;,&quot;xValue&quot;:9,&quot;yValue&quot;:60.0,&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;content&quot;:[&quot;Ziel:&quot;,&quot;50&quot;],&quot;font&quot;:{&quot;size&quot;:14},&quot;borderColor&quot;:&quot;transparent&quot;}]"
@@ -1150,7 +1151,7 @@ data-event-label="Change to Table tab"
         
 
         
-
+        
         
         
         <dt
@@ -1227,7 +1228,7 @@ data-event-label="Change to Table tab"
         
 
         
-
+        
         
         
         <dt
@@ -1332,7 +1333,7 @@ data-event-label="Change to indicator.sources tab"
     
 </ul>
 
-<div class="tab-content" >
+<div class="tab-content">
   
     
     
@@ -1440,7 +1441,7 @@ data-event-label="Change to indicator.sources tab"
             <th scope="row" style="text-align: left; width: 130px;">Definition </th>
             <td>
               
-                <p>Die Indikatoren stellen Nachhaltigkeit in der Beschaffung exemplarisch anhand der Vergabeverfahren (12.3.a), der <abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen von Kraftfahrzeugen (<abbr title="Kraftfahrzeug" tabindex="0">Kfz</abbr>) (12.3.b) sowie der nachhaltigen Textilbeschaffung (12.3.c) dar. Der Indikator 12.3.a “Vergabeverfahren in der öffentlichen Beschaffung, bei denen mindestens ein Nachhaltigkeitskriterium berücksichtigt wurde” stellt den Anteil an der Gesamtanzahl der öffentlichen Aufträge/Konzessionen mit Berücksichtigung von nachhaltigen Kriterien, die für das jeweilige Berichtsjahr an die Vergabestatistik gemeldet wurden (in Prozent) dar. Der Indikator 12.3.b „<abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen je Fahrleistungen der <abbr title="Kraftfahrzeug" tabindex="0">Kfz</abbr> der öffentlichen Hand“ setzt die <abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen im Vergleich zum Basisjahr 2015 ins Verhältnis zu den entsprechenden Fahrleistungen. Der Indikator 12.3.c stellt die nachhaltige Textilbeschaffung der Bundesverwaltung (exklusive Sondertextilien) (in Prozent) dar.</p>
+                <p>Die Indikatoren stellen Nachhaltigkeit in der öffentlichen Beschaffung exemplarisch anhand der Vergabeverfahren (12.3.a), der <abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen von Kraftfahrzeugen (<abbr title="Kraftfahrzeug" tabindex="0">Kfz</abbr>) (12.3.b) sowie der nachhaltigen Textilbeschaffung (12.3.c) dar. Der Indikator 12.3.a “Vergabeverfahren in der öffentlichen Beschaffung, bei denen mindestens ein Nachhaltigkeitskriterium berücksichtigt wurde” stellt den Anteil an der Gesamtanzahl der öffentlichen Aufträge/Konzessionen mit Berücksichtigung von nachhaltigen Kriterien, die für das jeweilige Berichtsjahr an die Vergabestatistik gemeldet wurden (in Prozent) dar. Der Indikator 12.3.b „<abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen je Fahrleistungen der <abbr title="Kraftfahrzeug" tabindex="0">Kfz</abbr> der öffentlichen Hand“ setzt die <abbr title="Kohlenstoffdioxid" tabindex="0">CO₂</abbr>-Emissionen im Vergleich zum Basisjahr 2015 ins Verhältnis zu den entsprechenden Fahrleistungen. Der Indikator 12.3.c stellt die nachhaltige Textilbeschaffung der Bundesverwaltung (exklusive Sondertextilien) (in Prozent) dar.</p>
 
               
             </td>
@@ -7493,12 +7494,12 @@ data-event-label="Change to indicator.sources tab"
 <script>translations['search'] = translations['search'] || {};
     translations['search']['search'] = 'Suche';</script>
 
-<script src='/assets/js/sdg.js?v=20250210134048'></script>
+<script src='/assets/js/sdg.js?v=20250213135941'></script>
 
 
     
     
-    <script src="/assets/js/custom.js?v=20250210134048"></script><script>
+    <script src="/assets/js/custom.js?v=20250213135941"></script><script>
     new indicatorInit();
     new accessibilitySwitcher();
 </script>

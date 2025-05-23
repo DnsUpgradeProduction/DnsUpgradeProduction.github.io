@@ -2390,7 +2390,7 @@ function getDataMatchingCombination(data, combination, selectableFields) {
  * @return {Object|undefined} Color assignment object if found.
  */
 function getColorAssignmentByCombination(colorAssignments, combination) {
-  console.log("colorAssignement: ", colorAssignments);
+  //console.log("colorAssignement: ", colorAssignments);
   return colorAssignments.find(function(assignment) {
     return assignment.combination === combination;
   });
@@ -4526,8 +4526,23 @@ opensdg.chartTypes.base = function(info) {
     }
 
     // Manually set the borderWidths to 0 to avoid a weird border effect on the bars.
+    // exception for line datasets in a mixed chart
     config.data.datasets.forEach(function(dataset) {
+      if (dataset.type == 'line') {
+        dataset.borderWidth = 2;
+      }
+      else {
         dataset.borderWidth = 0;
+      }
+        //dataset.borderWidth = 0;
+    });
+    config.data.datasets.forEach(function(dataset) {
+      if (dataset.type == 'line') {
+        dataset.order = 0;
+      }
+      else {
+        dataset.order = 1;
+      }
     });
     // Add these overrides onto the normal config, and return it.
     _.merge(config, overrides);
